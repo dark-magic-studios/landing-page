@@ -1,0 +1,41 @@
+@import "@fontsource/cinzel/400.css";
+@import "@fontsource/cinzel/700.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "tailwindcss";
+
+/* ─── Brand Colour Palette ─────────────────────────────────────────────────── */
+:root {
+  --color-bg:           #0a0b10; /* near-black, slightly blue-tinted — page background */
+  --color-surface:      #0f1018; /* card / section surface background */
+  --color-border:       #1e2030; /* subtle borders between elements */
+  --color-purple:       #7c3aed; /* primary accent — deep violet */
+  --color-purple-mid:   #a855f7; /* mid purple, used for hover states */
+  --color-purple-light: #c084fc; /* light purple, highlights and tag text */
+  --color-blue:         #38bdf8; /* secondary accent — electric cyan-blue */
+  --color-blue-mid:     #7dd3fc; /* lighter blue, secondary text accents */
+  --color-text:         #e2e8f0; /* primary body text */
+  --color-muted:        #94a3b8; /* secondary / muted text */
+
+  /* ─── Font family references ──────────────────────────────────────────────── */
+  --font-cinzel: "Cinzel", Georgia, serif;
+  --font-inter:  "Inter", system-ui, sans-serif;
+}
+
+/* ─── Tailwind theme tokens ─────────────────────────────────────────────────── */
+@theme inline {
+  --font-heading: var(--font-cinzel);
+  --font-sans:    var(--font-inter);
+}
+
+/* ─── Base styles ───────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-inter);
+}
