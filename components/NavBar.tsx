@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-const links = [
-  { href: "/#studio", label: "The studio" },
-  { href: "/#services", label: "Services" },
-  { href: "/#work", label: "The work" },
-  { href: "/the-veil", label: "The veil" },
+const navLinks = [
+  { id: "studio", href: "/#studio", label: "The studio" },
+  { id: "services", href: "/#services", label: "Services" },
+  { id: "work", href: "/#work", label: "The work" },
+  { id: "veil", href: "/the-veil", label: "The veil" },
 ];
 
 export default function NavBar() {
@@ -35,8 +35,8 @@ export default function NavBar() {
       </Link>
 
       <div className="dm-nav__links">
-        {links.map((l) => (
-          <Link key={l.href} href={l.href} className="dm-nav__link">
+        {navLinks.map((l) => (
+          <Link key={l.id} href={l.href} className="dm-nav__link">
             {l.label}
           </Link>
         ))}
