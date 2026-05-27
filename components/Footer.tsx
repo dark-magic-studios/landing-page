@@ -24,15 +24,15 @@ export default function Footer() {
           </div>
           <div>
             <div className="dm-footer__head">The veil</div>
-            <a className="dm-footer__link" href="#">NDA template</a>
-            <a className="dm-footer__link" href="#">PGP key</a>
-            <a className="dm-footer__link" href="#">Signal handle</a>
+            <a className="dm-footer__link" href="/the-veil#nda">NDA template</a>
+            <a className="dm-footer__link" href="/the-veil#pgp">PGP key</a>
+            <a className="dm-footer__link" href="/the-veil#signal">Signal handle</a>
           </div>
           <div>
             <div className="dm-footer__head">Familiars</div>
-            <a className="dm-footer__link" href="#">Apply quietly</a>
-            <a className="dm-footer__link" href="#">Rates &amp; rules</a>
-            <a className="dm-footer__link" href="#">Cover identities</a>
+            <a className="dm-footer__link" href="/familiars#apply">Apply quietly</a>
+            <a className="dm-footer__link" href="/familiars#rates">Rates &amp; rules</a>
+            <a className="dm-footer__link" href="/familiars#cover">Cover identities</a>
           </div>
         </div>
       </div>
