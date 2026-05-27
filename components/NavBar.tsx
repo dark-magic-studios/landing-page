@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-const links = [
-  { id: "studio",   label: "The studio" },
-  { id: "services", label: "Services" },
-  { id: "work",     label: "The work" },
-  { id: "veil",     label: "The veil" },
+const navLinks = [
+  { id: "studio", href: "/#studio", label: "The studio" },
+  { id: "services", href: "/#services", label: "Services" },
+  { id: "work", href: "/#work", label: "The work" },
+  { id: "veil", href: "/the-veil", label: "The veil" },
 ];
 
 export default function NavBar() {
@@ -21,7 +22,7 @@ export default function NavBar() {
 
   return (
     <nav className={`dm-nav${scrolled ? " is-scrolled" : ""}`} aria-label="Main navigation">
-      <a className="dm-nav__brand" href="#top">
+      <Link className="dm-nav__brand" href="/">
         <Image
           src="/mark.png"
           alt=""
@@ -31,19 +32,19 @@ export default function NavBar() {
           priority
         />
         <span className="dm-nav__wordmark">Dark Magic Studios</span>
-      </a>
+      </Link>
 
       <div className="dm-nav__links">
-        {links.map((l) => (
-          <a key={l.id} href={`#${l.id}`} className="dm-nav__link">
+        {navLinks.map((l) => (
+          <Link key={l.id} href={l.href} className="dm-nav__link">
             {l.label}
-          </a>
+          </Link>
         ))}
       </div>
 
-      <a className="dm-btn dm-btn--ghost-outline" href="#contact">
+      <Link className="dm-btn dm-btn--ghost-outline" href="/#contact">
         Request a séance
-      </a>
+      </Link>
     </nav>
   );
 }
