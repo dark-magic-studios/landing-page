@@ -1,48 +1,62 @@
+import Image from "next/image";
+
 export default function Hero() {
   return (
-    <section
-      className="relative flex flex-col items-center justify-center px-6 py-32 text-center md:py-48"
-      style={{
-        background:
-          "radial-gradient(ellipse at 50% 40%, rgba(124,58,237,0.15) 0%, rgba(56,189,248,0.08) 40%, transparent 70%)",
-      }}
-      aria-label="Hero"
-    >
-      <h1
-        className="mb-6 text-4xl font-bold leading-tight tracking-tight md:text-6xl"
-        style={{ fontFamily: "var(--font-cinzel)", color: "var(--color-text)" }}
-      >
-        We build software that works.
-      </h1>
+    <header className="dm-hero" id="studio">
+      <div className="dm-hero__veil" aria-hidden="true" />
+      <div className="dm-hero__grain" aria-hidden="true" />
 
-      <p
-        className="mb-10 max-w-xl text-base leading-relaxed md:text-lg"
-        style={{ color: "var(--color-muted)" }}
-      >
-        Dark Magic Studios is an independent studio focused on tools, games, and
-        developer products. We ship things that are useful, well-made, and built
-        to last.
-      </p>
+      <div className="dm-hero__inner">
+        <div className="dm-hero__kicker">
+          <span className="dm-hero__kicker-dot" aria-hidden="true" />
+          <span>By appointment only · est. mmxix</span>
+        </div>
 
-      {/* Ghost CTA button with gradient border */}
-      <a
-        href="#work"
-        className="relative inline-flex items-center justify-center rounded-md px-7 py-3 text-sm font-semibold transition-all duration-200 hover:opacity-90"
-        style={{
-          background: "transparent",
-          color: "var(--color-purple-light)",
-          border: "1px solid transparent",
-          backgroundImage:
-            "linear-gradient(var(--color-bg), var(--color-bg)), linear-gradient(to right, var(--color-purple), var(--color-blue))",
-          backgroundOrigin: "border-box",
-          backgroundClip: "padding-box, border-box",
-          fontFamily: "var(--font-inter)",
-          letterSpacing: "0.05em",
-        }}
-        aria-label="See Our Work — scroll to projects section"
-      >
-        See Our Work
-      </a>
-    </section>
+        <Image
+          src="/mark.png"
+          alt=""
+          width={240}
+          height={240}
+          className="dm-hero__mark"
+          priority
+        />
+
+        <h1 className="dm-hero__title">
+          The ghost <span className="dm-text-plasma">studio.</span>
+        </h1>
+
+        <p className="dm-hero__lede">
+          We finish what you started. Your trailer ships with your studio&rsquo;s
+          name on it; the people who painted, animated, scored, and patched it
+          remain off-credits. That is the entire arrangement.
+        </p>
+
+        <div className="dm-hero__cta-row">
+          <a className="dm-btn dm-btn--primary" href="#contact">
+            Request a séance
+          </a>
+          <a className="dm-btn dm-btn--ghost" href="#services">
+            What we do →
+          </a>
+        </div>
+
+        <div className="dm-hero__meta" aria-label="Studio statistics">
+          <div>
+            <div className="dm-hero__meta-num">217</div>
+            <div className="dm-hero__meta-lbl">Passages delivered</div>
+          </div>
+          <div className="dm-hero__meta-sep" aria-hidden="true" />
+          <div>
+            <div className="dm-hero__meta-num">0</div>
+            <div className="dm-hero__meta-lbl">Credits taken</div>
+          </div>
+          <div className="dm-hero__meta-sep" aria-hidden="true" />
+          <div>
+            <div className="dm-hero__meta-num">48h</div>
+            <div className="dm-hero__meta-lbl">Reply, by sigil</div>
+          </div>
+        </div>
+      </div>
+    </header>
   );
 }

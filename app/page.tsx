@@ -1,18 +1,20 @@
-import Header from "@/components/Header";
+import NavBar from "@/components/NavBar";
 import Hero from "@/components/Hero";
-import Projects from "@/components/Projects";
-import About from "@/components/About";
+import Services from "@/components/Services";
+import TheWork from "@/components/TheWork";
+import Engagement from "@/components/Engagement";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <>
-      <Header />
+      <NavBar />
       <main>
         <Hero />
-        <Projects />
-        <About />
+        <Services />
+        <TheWork />
+        <Engagement />
         <Contact />
       </main>
       <Footer />
