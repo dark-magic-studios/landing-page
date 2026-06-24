@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   title: "Dark Magic Studios",
   description:
     "We finish what you started. A ghost studio for indie game developers — art, code, and narrative rescue, shipped under your name.",
-  icons: [{ rel: "icon", url: "/vector.png" }],
+  icons: [{ rel: "icon", url: "/vector.ico" }],
 };
 
 export default function RootLayout({
