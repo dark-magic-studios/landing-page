@@ -29,6 +29,11 @@ export default function Footer() {
             <a className="dm-footer__link" href="/the-veil#signal">Signal handle</a>
           </div>
           <div>
+            <div className="dm-footer__head">Products</div>
+            <a className="dm-footer__link" href="/products">All products</a>
+            <a className="dm-footer__link" href="/products/hocus">Hocus</a>
+          </div>
+          <div>
             <div className="dm-footer__head">Familiars</div>
             <a className="dm-footer__link" href="/familiars#apply">Apply quietly</a>
             <a className="dm-footer__link" href="/familiars#rates">Rates &amp; rules</a>
