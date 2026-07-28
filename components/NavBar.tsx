@@ -6,8 +6,8 @@ import Link from "next/link";
 
 const navLinks = [
   { id: "studio", href: "/#studio", label: "The studio" },
-  { id: "services", href: "/#services", label: "Services" },
-  { id: "work", href: "/#work", label: "The work" },
+  { id: "software", href: "/#software", label: "Apps & Tech" },
+  { id: "work", href: "/#work", label: "Software" },
   { id: "products", href: "/products", label: "Products" },
   { id: "veil", href: "/the-veil", label: "The veil" },
 ];
@@ -43,9 +43,10 @@ export default function NavBar() {
         ))}
       </div>
 
-      <Link className="dm-btn dm-btn--ghost-outline" href="/#contact">
-        Request a séance
+      <Link className="dm-btn dm-btn--ghost-outline" href="/products/hocus">
+        Explore Hocus
       </Link>
     </nav>
   );
 }
+

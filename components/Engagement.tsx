@@ -1,21 +1,21 @@
 const STEPS = [
   {
     num: "I",
-    title: "The séance",
-    body: "A one-hour call. No recording, no notes shared. You describe the work, the deadline, and the panic level. We listen.",
-    aside: "Free · NDA optional",
+    title: "Architecture & Spec",
+    body: "Defining modular schemas, agent personas, and strict protocol contracts before writing code. We establish test plans and runtime boundaries early.",
+    aside: "Phase I · Blueprint",
   },
   {
     num: "II",
-    title: "The sigil",
-    body: "If we are the right familiars, we send a sigil — a one-page engagement letter naming scope, price, dates, and the cover identity we will work under.",
-    aside: "Within 48 hours",
+    title: "Engineering & Performance",
+    body: "Building low-latency applications, game engines, and developer tools with zero-alloc data structures and deterministic state management.",
+    aside: "Phase II · Build",
   },
   {
     num: "III",
-    title: "The passage",
-    body: "We work. You see weekly passages — milestones delivered into your repo, your Notion, or your Drive. On the final passage, we hand back the keys and disappear.",
-    aside: "Weekly drops",
+    title: "Release & Open Source",
+    body: "Shipping documented binaries, open-source packages, and standalone software into production with comprehensive documentation and unit testing.",
+    aside: "Phase III · Ship",
   },
 ];
 
@@ -23,18 +23,17 @@ export default function Engagement() {
   return (
     <section className="dm-engagement" id="engagement" aria-labelledby="engagement-heading">
       <div className="dm-section__head">
-        <div className="dm-eyebrow">— Engagement</div>
+        <div className="dm-eyebrow">— Engineering lifecycle</div>
         <h2 id="engagement-heading" className="dm-section__title">
-          The three-step <em>ritual.</em>
+          How we <em>build &amp; ship.</em>
         </h2>
         <p className="dm-section__lede">
-          We do not list rates because every job is a different size, in a
-          different language, under a different deadline. We do list the steps,
-          and they are always these.
+          Every app, game, and software system created at Dark Magic Studios follows a
+          rigorous, disciplined development lifecycle from initial architecture to final release.
         </p>
       </div>
 
-      <ol className="dm-engagement__list" aria-label="Engagement process">
+      <ol className="dm-engagement__list" aria-label="Development process">
         {STEPS.map((s) => (
           <li key={s.num} className="dm-engagement__step">
             <div className="dm-engagement__num" aria-label={`Step ${s.num}`}>{s.num}</div>
@@ -49,3 +48,4 @@ export default function Engagement() {
     </section>
   );
 }
+

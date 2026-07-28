@@ -12,15 +12,15 @@ export default function Footer() {
             height={60}
             className="dm-footer__wordmark"
           />
-          <div className="dm-footer__inscription">We were never here.</div>
+          <div className="dm-footer__inscription">Apps, games, and developer tools.</div>
         </div>
 
         <div className="dm-footer__cols">
           <div>
             <div className="dm-footer__head">Studio</div>
-            <a className="dm-footer__link" href="#studio">About</a>
-            <a className="dm-footer__link" href="#services">Services</a>
-            <a className="dm-footer__link" href="#engagement">Engagement</a>
+            <a className="dm-footer__link" href="/#studio">About</a>
+            <a className="dm-footer__link" href="/#software">Apps &amp; Tech</a>
+            <a className="dm-footer__link" href="/#engagement">Process</a>
           </div>
           <div>
             <div className="dm-footer__head">The veil</div>
@@ -43,9 +43,10 @@ export default function Footer() {
       </div>
 
       <div className="dm-footer__base">
-        <span>© mmxxvi · Dark Magic Studios · all credit reserved to others</span>
-        <span>By appointment only</span>
+        <span>© mmxxvi · Dark Magic Studios · Independent Software Studio</span>
+        <span>Developer tools &amp; games</span>
       </div>
     </footer>
   );
 }
+

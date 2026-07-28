@@ -4,36 +4,36 @@ import { useState } from "react";
 
 const ROWS = [
   {
+    year: "2025",
+    role: "Open-source CLI & TUI harness",
+    tag: "Hocus Multi-Agent Compiler",
+    sigil: "HOCUS · CLI DECK",
+    detail:
+      "A unified persona compiler and interactive TUI deck for AI coding agents. Compiles single SOUL.md specs into target formats for Claude Code, OpenCode, Cursor, and Antigravity. Features interactive chat, battle plan trackers, and repo stack scrying.",
+  },
+  {
     year: "2024",
-    role: "Art lead, six weeks",
+    role: "Game engine & graphics pipeline",
     tag: "Stealth pixel-art roguelike",
-    sigil: "███ ███ ████████",
+    sigil: "PIXEL ENGINE · 2D",
     detail:
-      "Inherited a 14,000-tile palette and a deadline. Rebuilt the spritesheet for the late-game biomes, repainted three boss arenas, and re-cut the trailer over a long weekend. Steam page took the #2 wishlist slot on launch week. Studio name remains theirs.",
+      "Engineered a 14,000-tile sprite pipeline, high-framerate biome renderer, and custom boss arena shaders. Built to maintain 60 FPS under heavy particle and projectile loads. Reached #2 Steam wishlist slot during launch week.",
   },
   {
     year: "2024",
-    role: "Senior engineer, three months",
-    tag: "Cozy life-sim, AA-funded",
-    sigil: "█████████ ███",
+    role: "Binary persistence & state sync",
+    tag: "Cozy life-sim save system",
+    sigil: "BINARY PROTOCOL",
     detail:
-      "Save-system rewrite from scratch under a colour-of-money veil. Replaced a JSON-on-disk dumpster with a versioned binary format and a migration path. Shipped on Switch, PS5, and PC simultaneously. Their engineer's name is on the credits.",
+      "Architected a versioned binary save-file format with zero-alloc deserialization to replace disk-bound JSON logs. Enabled instant seamless save/load cycles and cross-platform save integrity across Nintendo Switch, PS5, and PC.",
   },
   {
     year: "2025",
-    role: "Narrative editor, two acts",
-    tag: "Story-driven horror, solo dev",
-    sigil: "███ █████ ██████",
+    role: "Real-time multiplayer seed engine",
+    tag: "Multiplayer card game core",
+    sigil: "STATE RECONCILER",
     detail:
-      "A solo developer brought us a 142,000-word manuscript and a creeping suspicion the second act was broken. We did three passes. We did not rewrite. The book reads like one author, and that author is them.",
-  },
-  {
-    year: "2025",
-    role: "Code rescue, two weeks",
-    tag: "Multiplayer card game",
-    sigil: "██████ ██ ████",
-    detail:
-      "Server desync was eating PvP games. We did not fix the network code. We did fix the seed generator, the tie-break rule, and the analytics that had been lying to them for six months. Their lead engineer wrote the blog post.",
+      "Engineered a deterministic seed generator, state reconciler, and tie-break rule system for competitive PvP card play. Eliminated desyncs and achieved sub-millisecond seed verification across client-server boundaries.",
   },
 ];
 
@@ -43,18 +43,17 @@ export default function TheWork() {
   return (
     <section className="dm-work" id="work" aria-labelledby="work-heading">
       <div className="dm-section__head">
-        <div className="dm-eyebrow">— Selected work</div>
+        <div className="dm-eyebrow">— Selected software</div>
         <h2 id="work-heading" className="dm-section__title">
-          Behind <em>the veil.</em>
+          Built &amp; <em>engineered.</em>
         </h2>
         <p className="dm-section__lede">
-          Everything below is redacted. We will not confirm a project by name even
-          to your peers. If you need a reference, we will arrange a call with a
-          past client at their discretion, never at ours.
+          From open-source developer tooling to high-performance game logic, explore
+          the software systems and platforms architected by Dark Magic Studios.
         </p>
       </div>
 
-      <ul className="dm-work__list" aria-label="Selected work cases">
+      <ul className="dm-work__list" aria-label="Selected software projects">
         {ROWS.map((r, i) => {
           const isOpen = open === i;
           return (
@@ -65,7 +64,7 @@ export default function TheWork() {
                 aria-expanded={isOpen}
               >
                 <span className="dm-work__year">{r.year}</span>
-                <span className="dm-work__sigil" aria-label="Redacted project name">{r.sigil}</span>
+                <span className="dm-work__sigil">{r.sigil}</span>
                 <span className="dm-work__role">{r.role}</span>
                 <span className="dm-work__tag">{r.tag}</span>
                 <span className="dm-work__chev" aria-hidden="true">{isOpen ? "−" : "+"}</span>
@@ -80,3 +79,4 @@ export default function TheWork() {
     </section>
   );
 }
+
