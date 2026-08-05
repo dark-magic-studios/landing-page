@@ -213,5 +213,225 @@
     "mtime": 1782329474.4477253,
     "ast_hash": "b7893fef52b0910ae6894cee3a2782c8",
     "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/.claude/launch.json": {
+    "mtime": 1785957194.2309053,
+    "ast_hash": "72f359d44678176b19a9fe76680632be",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/.cursor/hooks/state/continual-learning.json": {
+    "mtime": 1785957194.2324188,
+    "ast_hash": "439f6160a2bbc1c677e0969d08977220",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/app/familiars/page.tsx": {
+    "mtime": 1785957194.232643,
+    "ast_hash": "ebb796e0561786257ab2b1736d771f5e",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/app/layout.tsx": {
+    "mtime": 1785957194.232643,
+    "ast_hash": "f7f0d68c21683f862da3f62a24c35552",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/app/page.tsx": {
+    "mtime": 1785957194.232643,
+    "ast_hash": "ecfa91346cfeeed25abfa5fbaaa7ca42",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/app/products/hocus/page.tsx": {
+    "mtime": 1785957422.5333188,
+    "ast_hash": "89d2303a3ec12a8711ad612835cb32e7",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/app/products/page.tsx": {
+    "mtime": 1785957194.2332835,
+    "ast_hash": "e53794e0bc68b20322b346bf654ae547",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/app/the-veil/page.tsx": {
+    "mtime": 1785957194.2332835,
+    "ast_hash": "3657e872fbdbc25e1e6536645021c8ff",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/components/About.tsx": {
+    "mtime": 1785957194.2332835,
+    "ast_hash": "9e6a29adce0797bd3ae2c24dbff75b80",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/components/Contact.tsx": {
+    "mtime": 1785957194.233973,
+    "ast_hash": "11ef65a311fbfa3a1779c30446b3385d",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/components/Engagement.tsx": {
+    "mtime": 1785957194.233973,
+    "ast_hash": "91b39983e97ba52f17398a8a433f93b0",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/components/Footer.tsx": {
+    "mtime": 1785957194.233973,
+    "ast_hash": "912be8ca96ec787c2bd4e2dc1399618e",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/components/GradientRule.tsx": {
+    "mtime": 1785957194.233973,
+    "ast_hash": "46b72ee45df05a4bc164c0b2be781975",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/components/Header.tsx": {
+    "mtime": 1785957194.233973,
+    "ast_hash": "ab91b066b886899485e5e7232a22e0b4",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/components/Hero.tsx": {
+    "mtime": 1785957194.233973,
+    "ast_hash": "64ee4edef1c577ec153cac24312bd7fd",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/components/HocusCast.tsx": {
+    "mtime": 1785957384.734708,
+    "ast_hash": "c813eeed0dddb68b37bd504e1ec0ddee",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/components/NavBar.tsx": {
+    "mtime": 1785957194.233973,
+    "ast_hash": "e7b512e36f97533358dd0d56be2149ab",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/components/Products.tsx": {
+    "mtime": 1785957194.233973,
+    "ast_hash": "39569beec1a5a2d8bd816db5064da085",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/components/ProjectCard.tsx": {
+    "mtime": 1785957194.233973,
+    "ast_hash": "7965ca07c8d1bc45450b12e2f2006514",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/components/Projects.tsx": {
+    "mtime": 1785957194.2349052,
+    "ast_hash": "8da20fb9634d131f5f63502252b7f926",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/components/Services.tsx": {
+    "mtime": 1785957194.2349052,
+    "ast_hash": "57afc20bd88d7388d2678d04b1f62791",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/components/TheWork.tsx": {
+    "mtime": 1785957194.2349052,
+    "ast_hash": "f22dfc262f12a1e5f09032185e2c903c",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/eslint.config.mjs": {
+    "mtime": 1785957194.2349052,
+    "ast_hash": "dfa1f5f6a7037bf39dc510f30b180002",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/next.config.ts": {
+    "mtime": 1785957194.2365785,
+    "ast_hash": "9b77af189a21a7a64e4bd7a426f64176",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/package.json": {
+    "mtime": 1785957194.2379053,
+    "ast_hash": "57c8f3db2930ba01dfb309ec474082eb",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/postcss.config.mjs": {
+    "mtime": 1785957194.2389052,
+    "ast_hash": "239f3ebf717465dc636818a1a619398d",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/tsconfig.json": {
+    "mtime": 1785957194.260905,
+    "ast_hash": "64fdda637074fbf77da5f8fa811a1fed",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/AGENTS.md": {
+    "mtime": 1785957194.2324188,
+    "ast_hash": "9e09241799026ac05be315a2f0b50055",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/CLAUDE.md": {
+    "mtime": 1785957194.2324188,
+    "ast_hash": "5c27369b226fcf2be8a6cfe52224e767",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/README.md": {
+    "mtime": 1785957194.2324188,
+    "ast_hash": "e0fe0f0bdf1f75b509706f85de1fa589",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/pnpm-workspace.yaml": {
+    "mtime": 1785957194.2389052,
+    "ast_hash": "2786dfc91a741d119c6ca997a30dd1c9",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/public/file.svg": {
+    "mtime": 1785957194.2389052,
+    "ast_hash": "d09f95206c3fa0bb9bd9fefabfd0ea71",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/public/globe.svg": {
+    "mtime": 1785957194.2399306,
+    "ast_hash": "2aaafa6a49b6563925fe440891e32717",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/public/logo.png": {
+    "mtime": 1785957194.246905,
+    "ast_hash": "22d7a449f0657275de50c0f62d3f16d0",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/public/mark.png": {
+    "mtime": 1785957194.253905,
+    "ast_hash": "825dc6d127172c266373ea49e44e7db7",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/public/next.svg": {
+    "mtime": 1785957194.254905,
+    "ast_hash": "8e061864f388b47f33a1c3780831193e",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/public/products/hocus/header.png": {
+    "mtime": 1785957194.255667,
+    "ast_hash": "a8ed155cb7b1f0ad44660407b3904bd7",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/public/products/hocus/logo-stacked.png": {
+    "mtime": 1785957194.2559104,
+    "ast_hash": "61823bd09f5da0dda903dfe0c3b3ed80",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/public/products/hocus/mark.png": {
+    "mtime": 1785957194.2559104,
+    "ast_hash": "2962e95688660b2d097840aa3d243612",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/public/vector-small.png": {
+    "mtime": 1785957194.2559104,
+    "ast_hash": "660b43ca432d78df80fc701488007f39",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/public/vector.png": {
+    "mtime": 1785957194.257905,
+    "ast_hash": "8b75beacce4c870ddb0862c4e1bcea44",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/public/vercel.svg": {
+    "mtime": 1785957194.257905,
+    "ast_hash": "c0af2f507b369b085b35ef4bbe3bcf1e",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/public/window.svg": {
+    "mtime": 1785957194.257905,
+    "ast_hash": "a2760511c65806022ad20adf74370ff3",
+    "semantic_hash": ""
+  },
+  "/home/david/orca/workspaces/landing-page/hocus-page-expansion/public/wordmark.png": {
+    "mtime": 1785957194.260905,
+    "ast_hash": "b7893fef52b0910ae6894cee3a2782c8",
+    "semantic_hash": ""
   }
 }

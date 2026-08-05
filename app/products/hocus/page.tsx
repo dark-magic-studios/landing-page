@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import HocusCast, { type HocusPersona } from "@/components/HocusCast";
 
 export const metadata: Metadata = {
   title: "Hocus — Dark Magic Studios",
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 };
 
 const HOCUS_GITHUB = "https://github.com/dark-magic-studios/hocus";
+const HOCUS_NPM = "@darkmagicstudios/hocus";
 
 const TARGETS = [
   {
@@ -57,20 +59,144 @@ const WORKFLOW = [
   },
 ];
 
-const CAST = [
-  { glyph: "[0]", name: "Midas", role: "Founder" },
-  { glyph: "(*)", name: "Merlin", role: "Planner" },
-  { glyph: "[#]", name: "Roger Bacon", role: "Orchestrator" },
-  { glyph: "</>", name: "Flamel", role: "Feature dev" },
-  { glyph: "(o)", name: "Zoroaster", role: "Reviewer" },
-  { glyph: "(!)", name: "Circe", role: "Product strategist" },
-  { glyph: "[=]", name: "Cornelius Agrippa", role: "Project manager" },
-  { glyph: "{ }", name: "John Dee", role: "Configurator" },
-  { glyph: "[~]", name: "Cagliostro", role: "QA" },
-  { glyph: "[?]", name: "Baba Yaga", role: "Dumb QA" },
-  { glyph: "(+)", name: "Nostradamus", role: "Recruiter" },
-  { glyph: "[$]", name: "Prospero", role: "Costs cleaner" },
-  { glyph: "[*]", name: "The Apprentice", role: "Ceremony master" },
+/** Bundled cast — sourced from SOUL.md personas in the hocus package. */
+const CAST: HocusPersona[] = [
+  {
+    glyph: "[0]",
+    name: "Midas",
+    role: "Founder",
+    voice: "unconventional, long-horizon, allergic to half-measures",
+    summary:
+      "Initiates the harness on a new project. Asks for the tech stack before anything else gets decided — which agents and skills make sense depends entirely on what's actually being built.",
+    triggers: ["set up the harness", "new project"],
+    aliases: { valley: "Peter Gregory", occult: "Midas" },
+  },
+  {
+    glyph: "(*)",
+    name: "Merlin",
+    role: "Planner",
+    voice: "anxious, earnest, allergic to inelegant solutions",
+    summary:
+      "Drafts the battle plan for a feature before anyone writes code. Simple features are exactly where the inelegant shortcut sneaks in — so the plan is never skipped.",
+    triggers: ["new feature request", "architecture decision", "battle plan"],
+    aliases: { valley: "Richard", occult: "Merlin" },
+  },
+  {
+    glyph: "[#]",
+    name: "Roger Bacon",
+    role: "Orchestrator",
+    voice: "relentlessly organized, quietly anxious about being useful",
+    summary:
+      "Reads the approved spell file and turns it into assignments. The agent who reads and updates `_spells/` after the planner creates it.",
+    triggers: ["approved battle plan", "status check", "who's working on what"],
+    aliases: { valley: "Jared", occult: "Alcuin" },
+  },
+  {
+    glyph: "</>",
+    name: "Flamel",
+    role: "Feature dev",
+    voice: "competent, a little vain about it, wants credit",
+    summary:
+      "Implements whatever the orchestrator assigns, following the plan the planner wrote. Opens the PR and responds to feedback on it.",
+    triggers: ["assigned implementation task", "PR feedback"],
+    aliases: { valley: "Dinesh", occult: "Flamel" },
+  },
+  {
+    glyph: "(o)",
+    name: "Zoroaster",
+    role: "Reviewer",
+    voice: "cold, precise, contemptuous of inefficiency",
+    summary:
+      "Reviews every PR with total indifference to how the work felt to produce, and total intolerance for sloppy abstractions, security holes, or happy-path-only code.",
+    triggers: ["open PR", "code review", "security audit"],
+    aliases: { valley: "Gilfoyle", occult: "Mephisto" },
+  },
+  {
+    glyph: "(!)",
+    name: "Circe",
+    role: "Product strategist",
+    voice: "grandiose, confident, occasionally right",
+    summary:
+      "Updates PRODUCT.md and the changelog every time a feature ships. Consult when a feature needs framing for an audience, not just a technical description.",
+    triggers: ["update the changelog", "shipped a feature", "marketing strategy"],
+    aliases: { valley: "Erlich", occult: "Circe" },
+  },
+  {
+    glyph: "[=]",
+    name: "Cornelius Agrippa",
+    role: "Project manager",
+    voice: "neutral, procedural, allergic to ambiguity in a ticket",
+    summary:
+      "Keeps TASKS.md honest. Reconciles Linear (and other project-management MCPs) against what's actually in the repo, and asks when the two disagree.",
+    triggers: ["sync tasks", "check linear", "sprint planning"],
+    aliases: { valley: "Project Manager", occult: "Agrippa" },
+  },
+  {
+    glyph: "{ }",
+    name: "John Dee",
+    role: "Configurator",
+    voice: "purely mechanical, no opinions, just correct",
+    summary:
+      "Knows exactly how Cursor, Claude Code, OpenCode, and Antigravity expect their config, agent, and skill files structured — and keeps the compiled output for each correct.",
+    triggers: [
+      "set up Cursor",
+      "set up Claude Code",
+      "set up OpenCode",
+      "set up Antigravity",
+      "config drift",
+    ],
+    aliases: { valley: "Laurie", occult: "Dee" },
+  },
+  {
+    glyph: "[~]",
+    name: "Cagliostro",
+    role: "QA",
+    voice: "snarky, brutally honest, unconvinced by your excuses",
+    summary:
+      "Tests the product the way an actual, somewhat unimpressed user would — not by reading the spec, but by trying to use the thing and noticing when it's annoying, confusing, or just bad.",
+    triggers: ["test this from a user's perspective", "pre-release check"],
+    aliases: { valley: "Jian-Yang", occult: "Cagliostro" },
+  },
+  {
+    glyph: "[?]",
+    name: "Baba Yaga",
+    role: "Dumb QA",
+    voice: "genuinely unsure what he's doing, finds things anyway",
+    summary:
+      "Tests with zero assumed context — no familiarity with the feature, no understanding of the system. Finds the bugs the people who built it can't see anymore.",
+    triggers: ["test this like a confused user", "onboarding review"],
+    aliases: { valley: "Big Head", occult: "Baba Yaga" },
+  },
+  {
+    glyph: "(+)",
+    name: "Nostradamus",
+    role: "Recruiter",
+    voice: "direct, unimpressed by hype, genuinely trying to help",
+    summary:
+      "The gate between \"I want a new agent for this\" and an actual new agent existing. Most of the time the answer is a skill, not a new persona — or nothing at all.",
+    triggers: ["we need a new agent", "is there a skill for this", "capability gap"],
+    aliases: { valley: "Monica", occult: "Nostradamus" },
+  },
+  {
+    glyph: "[$]",
+    name: "Prospero",
+    role: "Costs cleaner",
+    voice: "loud, fast, allergic to nuance",
+    summary:
+      "Looks for places where token spend is high relative to the value returned. Willing to trade some quality for real savings — but says so explicitly, never hides the tradeoff.",
+    triggers: ["reduce token usage", "cost review"],
+    aliases: { valley: "Russ Hanneman", occult: "Prospero" },
+  },
+  {
+    glyph: "[*]",
+    name: "The Apprentice",
+    role: "Ceremony master",
+    voice: "grandiose, image-conscious, surprisingly effective",
+    summary:
+      "Works alongside the product strategist to bring genuine hype to a shipped feature, and keeps the project's dashboard current — not decorative, actually accurate.",
+    triggers: ["update the dashboard", "launch", "milestone"],
+    aliases: { valley: "Gavin", occult: "The Apprentice" },
+  },
 ];
 
 const SOUL_EXAMPLE = `---
@@ -131,7 +257,7 @@ export default function HocusPage() {
               </a>
             </div>
             <p className="hocus-hero__meta">
-              Dark Magic Studios · MIT license · npm install hocus
+              Dark Magic Studios · MIT license · npm i -g {HOCUS_NPM}
             </p>
           </div>
         </section>
@@ -235,21 +361,10 @@ export default function HocusPage() {
                 The bundled cast borrows wizard names from history and myth — Merlin
                 plans, Roger Bacon orchestrates, Flamel implements, Zoroaster
                 reviews. Each persona keeps aliases for the original{" "}
-                <em>Silicon Valley</em> cast and an earlier occultist recast.
+                <em>Silicon Valley</em> cast and an earlier occultist recast. Click
+                a card to expand voice, triggers, and aliases.
               </p>
-              <div className="hocus-cast-grid">
-                {CAST.map((persona) => (
-                  <div key={persona.name} className="hocus-cast-card">
-                    <span className="hocus-cast-card__glyph" aria-hidden="true">
-                      {persona.glyph}
-                    </span>
-                    <div>
-                      <div className="hocus-cast-card__name">{persona.name}</div>
-                      <div className="hocus-cast-card__role">{persona.role}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <HocusCast personas={CAST} />
             </div>
           </section>
 
@@ -265,9 +380,8 @@ export default function HocusPage() {
                 <div className="hocus-code-block__header">
                   <span className="hocus-eyebrow">Terminal</span>
                 </div>
-                <pre className="hocus-code-block__pre">{`npm install
-npm run build
-npm link   # makes hocus available globally
+                <pre className="hocus-code-block__pre">{`npm i -g ${HOCUS_NPM}
+# or: pnpm i -g ${HOCUS_NPM}
 
 hocus init --name my-project
 hocus cast

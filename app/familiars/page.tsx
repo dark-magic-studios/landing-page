@@ -39,8 +39,8 @@ export default function FamiliarsPage() {
               </p>
               <p>
                 Send a brief introduction — who you are, what you make, and one
-                piece of work you are genuinely proud of — to our Signal handle
-                or via encrypted email. We read everything and reply to what
+                piece of work you are genuinely proud of — to
+                hello@darkmagicstudios.com. We read everything and reply to what
                 fits. No acknowledgement does not mean no; it means not yet.
               </p>
               <div className="dm-familiars-traits">
@@ -53,11 +53,8 @@ export default function FamiliarsPage() {
                 </ul>
               </div>
               <div className="dm-veil-section__actions">
-                <a className="dm-btn dm-btn--primary" href="/the-veil#signal">
-                  Send via Signal
-                </a>
-                <a className="dm-btn dm-btn--ghost-outline" href="/the-veil#pgp">
-                  Send encrypted email
+                <a className="dm-btn dm-btn--primary" href="mailto:hello@darkmagicstudios.com">
+                  Send a note
                 </a>
               </div>
             </div>
@@ -88,9 +85,9 @@ export default function FamiliarsPage() {
                 <div className="dm-familiars-rule">
                   <span className="dm-eyebrow">Confidentiality</span>
                   <p>
-                    All familiars sign the same NDA as our clients. The name of
-                    the project, the client, and the scope are all covered.
-                    Permanently. Universally.
+                    All familiars sign a mutual confidentiality agreement before
+                    any work begins. The name of the project, the client, and the
+                    scope are all covered. Permanently. Universally.
                   </p>
                 </div>
                 <div className="dm-familiars-rule">

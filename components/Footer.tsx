@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -18,15 +19,13 @@ export default function Footer() {
         <div className="dm-footer__cols">
           <div>
             <div className="dm-footer__head">Studio</div>
-            <a className="dm-footer__link" href="/#studio">About</a>
-            <a className="dm-footer__link" href="/#software">Apps &amp; Tech</a>
-            <a className="dm-footer__link" href="/#engagement">Process</a>
+            <Link className="dm-footer__link" href="/#studio">About</Link>
+            <Link className="dm-footer__link" href="/#software">Apps &amp; Tech</Link>
+            <Link className="dm-footer__link" href="/#engagement">Process</Link>
           </div>
           <div>
-            <div className="dm-footer__head">The veil</div>
-            <a className="dm-footer__link" href="/the-veil#nda">NDA template</a>
-            <a className="dm-footer__link" href="/the-veil#pgp">PGP key</a>
-            <a className="dm-footer__link" href="/the-veil#signal">Signal handle</a>
+            <div className="dm-footer__head">Contact</div>
+            <a className="dm-footer__link" href="mailto:hello@darkmagicstudios.com">hello@darkmagicstudios.com</a>
           </div>
           <div>
             <div className="dm-footer__head">Products</div>

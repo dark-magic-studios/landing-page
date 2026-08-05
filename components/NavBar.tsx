@@ -9,7 +9,6 @@ const navLinks = [
   { id: "software", href: "/#software", label: "Apps & Tech" },
   { id: "work", href: "/#work", label: "Software" },
   { id: "products", href: "/products", label: "Products" },
-  { id: "veil", href: "/the-veil", label: "The veil" },
 ];
 
 export default function NavBar() {
