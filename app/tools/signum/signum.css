@@ -1,0 +1,583 @@
+/* Signum — scoped styles, ported from the Inkwell artifact. All rules are
+   namespaced under .signum-app so they never leak into (or collide with)
+   the site's global design tokens. */
+
+.signum-app {
+  --sig-paper: #f4f2f6;
+  --sig-paper-raised: #ffffff;
+  --sig-paper-sunken: #eae5f0;
+  --sig-ink: #2a2438;
+  --sig-ink-soft: #685f75;
+  --sig-ink-faint: #9891a1;
+  --sig-accent: #6b3fa0;
+  --sig-accent-hover: #7c4fb3;
+  --sig-accent-soft: #ede3f5;
+  --sig-accent-soft-line: #d5c1e7;
+  --sig-brass: #3e7c59;
+  --sig-brass-soft: #e2eee6;
+  --sig-line: #ddd3e6;
+  --sig-line-strong: #c4b3d4;
+  --sig-danger: #a13d2e;
+  --sig-danger-soft: #f5e3df;
+  --sig-shadow: 0 1px 2px rgba(42, 36, 56, 0.07), 0 6px 20px rgba(42, 36, 56, 0.09);
+  --sig-radius-sm: 3px;
+  --sig-radius-md: 5px;
+  --sig-font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --sig-font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --sig-font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  .signum-app {
+    --sig-paper: #1a1622;
+    --sig-paper-raised: #221c2c;
+    --sig-paper-sunken: #140f1a;
+    --sig-ink: #eae3f0;
+    --sig-ink-soft: #a99db5;
+    --sig-ink-faint: #766a82;
+    --sig-accent: #b98ce0;
+    --sig-accent-hover: #c9a2ea;
+    --sig-accent-soft: #33253f;
+    --sig-accent-soft-line: #4a3659;
+    --sig-brass: #6fbf8f;
+    --sig-brass-soft: #1e3327;
+    --sig-line: #372b44;
+    --sig-line-strong: #4a3b58;
+    --sig-danger: #dd8171;
+    --sig-danger-soft: #3a2420;
+    --sig-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+}
+
+.signum-app * { box-sizing: border-box; }
+.signum-app {
+  background: var(--sig-paper);
+  color: var(--sig-ink);
+  font-family: var(--sig-font-body);
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+.signum-app ::selection { background: var(--sig-accent-soft-line); }
+
+.signum-app button { font-family: inherit; }
+.signum-app input, .signum-app textarea, .signum-app select { font-family: inherit; }
+
+.signum-app .app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ---------- Top bar ---------- */
+.signum-app .topbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 18px;
+  border-bottom: 1px solid var(--sig-line);
+  background: var(--sig-paper-raised);
+  flex: 0 0 auto;
+}
+.signum-app .brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding-right: 12px;
+  border-right: 1px solid var(--sig-line);
+  text-decoration: none;
+  color: inherit;
+}
+.signum-app .brand svg { width: 22px; height: 22px; flex: none; }
+.signum-app .brand-name {
+  font-family: var(--sig-font-display);
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+.signum-app .doc-name {
+  font-size: 13px;
+  color: var(--sig-ink-soft);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 320px;
+}
+.signum-app .doc-name.placeholder { color: var(--sig-ink-faint); font-style: italic; }
+.signum-app .topbar-spacer { flex: 1; }
+.signum-app .zoom-group {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: var(--sig-paper-sunken);
+  border-radius: var(--sig-radius-md);
+  padding: 3px;
+}
+.signum-app .zoom-group button {
+  width: 26px; height: 26px;
+  display: flex; align-items: center; justify-content: center;
+  border: none; background: transparent; border-radius: var(--sig-radius-sm);
+  color: var(--sig-ink-soft); cursor: pointer; font-size: 15px;
+}
+.signum-app .zoom-group button:hover { background: var(--sig-paper-raised); color: var(--sig-ink); }
+.signum-app .zoom-label {
+  font-family: var(--sig-font-mono);
+  font-size: 11px;
+  color: var(--sig-ink-soft);
+  width: 42px;
+  text-align: center;
+}
+
+.signum-app .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: var(--sig-radius-md);
+  border: 1px solid var(--sig-line-strong);
+  background: var(--sig-paper-raised);
+  color: var(--sig-ink);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.signum-app .btn:hover { border-color: var(--sig-ink-faint); }
+.signum-app .btn:active { transform: translateY(1px); }
+.signum-app .btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+.signum-app .btn svg { width: 15px; height: 15px; flex: none; }
+.signum-app .btn-primary {
+  background: var(--sig-accent);
+  border-color: var(--sig-accent);
+  color: #fdfbf7;
+}
+.signum-app .btn-primary:hover { background: var(--sig-accent-hover); border-color: var(--sig-accent-hover); }
+.signum-app .btn-ghost { border-color: transparent; background: transparent; }
+.signum-app .btn-ghost:hover { background: var(--sig-paper-sunken); border-color: transparent; }
+.signum-app .btn-sm { padding: 5px 10px; font-size: 12px; }
+
+/* ---------- Body layout ---------- */
+.signum-app .body {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.signum-app .sidebar {
+  width: 292px;
+  flex: 0 0 auto;
+  background: var(--sig-paper-raised);
+  border-right: 1px solid var(--sig-line);
+  overflow-y: auto;
+  padding: 16px 14px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.signum-app .side-section-title {
+  font-family: var(--sig-font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--sig-ink-faint);
+  margin: 0 0 9px 2px;
+}
+
+.signum-app .upload-zone {
+  border: 1.5px dashed var(--sig-line-strong);
+  border-radius: var(--sig-radius-md);
+  padding: 22px 14px;
+  text-align: center;
+  cursor: pointer;
+  background: var(--sig-paper-sunken);
+  transition: border-color .15s, background .15s;
+}
+.signum-app .upload-zone:hover, .signum-app .upload-zone.drag-over {
+  border-color: var(--sig-accent);
+  background: var(--sig-accent-soft);
+}
+.signum-app .upload-zone svg { width: 26px; height: 26px; color: var(--sig-ink-faint); margin-bottom: 8px; }
+.signum-app .upload-zone .u-title { font-size: 13px; font-weight: 500; }
+.signum-app .upload-zone .u-sub { font-size: 11.5px; color: var(--sig-ink-soft); margin-top: 3px; }
+
+.signum-app .field-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.signum-app .field-tool {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 11px 10px;
+  border-radius: var(--sig-radius-md);
+  border: 1px solid var(--sig-line);
+  background: var(--sig-paper);
+  cursor: grab;
+  text-align: left;
+}
+.signum-app .field-tool:hover { border-color: var(--sig-accent); background: var(--sig-accent-soft); }
+.signum-app .field-tool.armed { border-color: var(--sig-accent); background: var(--sig-accent-soft); box-shadow: inset 0 0 0 1px var(--sig-accent); }
+.signum-app .field-tool.dragging { opacity: 0.5; }
+.signum-app .field-tool svg { width: 16px; height: 16px; color: var(--sig-accent); }
+.signum-app .field-tool span { font-size: 12.5px; font-weight: 500; }
+.signum-app .field-tool.wide { grid-column: 1 / -1; flex-direction: row; align-items: center; }
+.signum-app .tool-hint {
+  font-size: 11px;
+  color: var(--sig-ink-faint);
+  margin: 7px 2px 0;
+  line-height: 1.5;
+}
+
+.signum-app .page.dnd-over {
+  outline: 2px dashed var(--sig-accent);
+  outline-offset: 3px;
+}
+
+.signum-app .armed-hint {
+  font-size: 11.5px;
+  color: var(--sig-accent);
+  background: var(--sig-accent-soft);
+  border: 1px solid var(--sig-accent-soft-line);
+  padding: 7px 9px;
+  border-radius: var(--sig-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.signum-app .armed-hint button { border: none; background: transparent; color: var(--sig-accent); cursor: pointer; font-size: 11px; text-decoration: underline; padding: 0; }
+
+.signum-app .field-list { display: flex; flex-direction: column; gap: 7px; }
+.signum-app .field-item {
+  border: 1px solid var(--sig-line);
+  border-radius: var(--sig-radius-md);
+  background: var(--sig-paper);
+  overflow: hidden;
+}
+.signum-app .field-item.selected { border-color: var(--sig-accent); box-shadow: 0 0 0 1px var(--sig-accent); }
+.signum-app .field-item-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 9px;
+  cursor: pointer;
+}
+.signum-app .field-item-icon { width: 14px; height: 14px; flex: none; color: var(--sig-ink-soft); }
+.signum-app .field-item-label {
+  font-size: 12.5px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+.signum-app .field-item-page {
+  font-family: var(--sig-font-mono);
+  font-size: 10px;
+  color: var(--sig-ink-faint);
+  flex: none;
+}
+.signum-app .field-item-del {
+  border: none; background: transparent; color: var(--sig-ink-faint); cursor: pointer;
+  width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;
+  border-radius: var(--sig-radius-sm); flex: none;
+}
+.signum-app .field-item-del:hover { color: var(--sig-danger); background: var(--sig-danger-soft); }
+.signum-app .field-item-del svg { width: 13px; height: 13px; }
+
+.signum-app .field-empty {
+  font-size: 12px;
+  color: var(--sig-ink-faint);
+  padding: 10px 4px;
+  line-height: 1.5;
+}
+
+/* ---------- Inspector (inside field item) ---------- */
+.signum-app .inspector {
+  padding: 10px 10px 12px;
+  border-top: 1px solid var(--sig-line);
+  background: var(--sig-paper-sunken);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.signum-app .insp-row { display: flex; flex-direction: column; gap: 5px; }
+.signum-app .insp-row.split { flex-direction: row; gap: 8px; }
+.signum-app .insp-row.split > * { flex: 1; }
+.signum-app .insp-label {
+  font-family: var(--sig-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sig-ink-faint);
+}
+.signum-app .insp-text {
+  width: 100%;
+  padding: 7px 8px;
+  border: 1px solid var(--sig-line-strong);
+  border-radius: var(--sig-radius-sm);
+  background: var(--sig-paper-raised);
+  color: var(--sig-ink);
+  font-size: 12.5px;
+  resize: vertical;
+  min-height: 32px;
+}
+.signum-app .insp-text:focus, .signum-app .swatch input:focus-visible, .signum-app select.insp-text:focus { outline: 2px solid var(--sig-accent); outline-offset: 1px; }
+.signum-app select.insp-text { min-height: unset; }
+
+.signum-app .cursive-picker {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.signum-app .cursive-opt {
+  border: 1px solid var(--sig-line-strong);
+  border-radius: var(--sig-radius-sm);
+  background: var(--sig-paper-raised);
+  padding: 8px 4px;
+  text-align: center;
+  font-size: 19px;
+  color: var(--sig-ink);
+  cursor: pointer;
+  line-height: 1;
+}
+.signum-app .cursive-opt:hover { border-color: var(--sig-accent); }
+.signum-app .cursive-opt.active { border-color: var(--sig-accent); background: var(--sig-accent-soft); box-shadow: inset 0 0 0 1px var(--sig-accent); }
+
+.signum-app .swatch-row { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.signum-app .swatch {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--sig-line-strong);
+  cursor: pointer;
+  position: relative;
+  flex: none;
+}
+.signum-app .swatch.active::after {
+  content: "";
+  position: absolute; inset: -4px;
+  border: 1.5px solid var(--sig-accent);
+  border-radius: 50%;
+}
+.signum-app .swatch.custom {
+  padding: 0; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.signum-app .swatch.custom input[type="color"] {
+  width: 30px; height: 30px; border: none; padding: 0; margin: -4px; cursor: pointer; background: transparent;
+}
+
+.signum-app .range-row { display: flex; align-items: center; gap: 8px; }
+.signum-app .range-row input[type="range"] { flex: 1; accent-color: var(--sig-accent); }
+.signum-app .range-val { font-family: var(--sig-font-mono); font-size: 11px; color: var(--sig-ink-soft); width: 30px; text-align: right; }
+
+.signum-app .logo-thumb {
+  width: 100%;
+  height: 60px;
+  border: 1px solid var(--sig-line-strong);
+  border-radius: var(--sig-radius-sm);
+  background: var(--sig-paper-raised) repeating-conic-gradient(#0000 0 25%, #00000008 0 50%) 0 0/14px 14px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.signum-app .logo-thumb img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+/* ---------- Canvas area ---------- */
+.signum-app .canvas-scroll {
+  flex: 1;
+  overflow: auto;
+  background: var(--sig-paper-sunken);
+  padding: 30px 0 90px;
+}
+.signum-app .canvas-scroll.placing { cursor: crosshair; }
+
+.signum-app .empty-state {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: var(--sig-ink-faint);
+  text-align: center;
+  padding: 40px;
+}
+.signum-app .empty-state svg { width: 64px; height: 64px; opacity: 0.5; }
+.signum-app .empty-state h2 {
+  font-family: var(--sig-font-display);
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--sig-ink-soft);
+  margin: 0;
+}
+.signum-app .empty-state p { max-width: 360px; font-size: 13px; line-height: 1.6; margin: 0; }
+
+.signum-app .pages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+}
+.signum-app .page-wrap { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.signum-app .page-num {
+  font-family: var(--sig-font-mono);
+  font-size: 10.5px;
+  color: var(--sig-ink-faint);
+  letter-spacing: 0.04em;
+}
+.signum-app .page {
+  position: relative;
+  background: #fff;
+  box-shadow: var(--sig-shadow);
+  line-height: 0;
+}
+.signum-app .page canvas { display: block; }
+
+/* ---------- Field overlays on page ---------- */
+.signum-app .field {
+  position: absolute;
+  cursor: grab;
+  border: 1.5px solid transparent;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  touch-action: none;
+}
+.signum-app .field:hover { border-color: var(--sig-accent-soft-line); }
+.signum-app .field.selected { border-color: var(--sig-accent); box-shadow: 0 0 0 3px var(--sig-accent-soft); cursor: default; }
+.signum-app .field.dragging { cursor: grabbing; opacity: 0.85; }
+.signum-app .field-text {
+  width: 100%; height: 100%;
+  padding: 2px 4px;
+  overflow: hidden;
+  white-space: pre-wrap;
+  word-break: break-word;
+  outline: none;
+  line-height: 1.15;
+}
+.signum-app .field-text.empty-placeholder { color: #b3a998; }
+.signum-app .field-signature {
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  pointer-events: none;
+}
+.signum-app .field-signature.empty-placeholder {
+  font-family: var(--sig-font-body) !important;
+  font-size: 11px !important;
+  color: #b3a998;
+  font-style: italic;
+}
+.signum-app .field-logo {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+}
+.signum-app .field-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.signum-app .field-logo.empty-placeholder {
+  border: 1.5px dashed var(--sig-line-strong);
+  background: rgba(0, 0, 0, 0.02);
+  font-size: 10.5px;
+  color: var(--sig-ink-faint);
+  text-align: center;
+}
+.signum-app .field-del {
+  position: absolute;
+  top: -9px; right: -9px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--sig-danger);
+  color: #fff;
+  border: 1.5px solid var(--sig-paper-raised);
+  display: none;
+  align-items: center; justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+}
+.signum-app .field.selected .field-del { display: flex; }
+.signum-app .field-del svg { width: 9px; height: 9px; }
+.signum-app .field-resize {
+  position: absolute;
+  right: -4px; bottom: -4px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--sig-accent);
+  border: 1.5px solid var(--sig-paper-raised);
+  display: none;
+  cursor: nwse-resize;
+  z-index: 3;
+}
+.signum-app .field.selected .field-resize { display: block; }
+
+/* ---------- Toast / status ---------- */
+.signum-app .toast {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%) translateY(8px);
+  background: var(--sig-ink);
+  color: var(--sig-paper);
+  padding: 10px 16px;
+  border-radius: var(--sig-radius-md);
+  font-size: 12.5px;
+  box-shadow: var(--sig-shadow);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease;
+  z-index: 50;
+  max-width: 420px;
+  text-align: center;
+}
+.signum-app .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+.signum-app .toast.error { background: var(--sig-danger); }
+
+.signum-app .rendering-note {
+  position: fixed;
+  top: 54px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--sig-paper-raised);
+  border: 1px solid var(--sig-line);
+  box-shadow: var(--sig-shadow);
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--sig-ink-soft);
+  display: none;
+  align-items: center;
+  gap: 8px;
+  z-index: 40;
+}
+.signum-app .rendering-note.show { display: flex; }
+.signum-app .spinner {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--sig-line-strong);
+  border-top-color: var(--sig-accent);
+  animation: signum-spin 0.7s linear infinite;
+}
+@keyframes signum-spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .signum-app .spinner { animation: none; }
+  .signum-app .toast { transition: none; }
+}
+
+.signum-app .sidebar::-webkit-scrollbar, .signum-app .canvas-scroll::-webkit-scrollbar { width: 10px; }
+.signum-app .sidebar::-webkit-scrollbar-thumb, .signum-app .canvas-scroll::-webkit-scrollbar-thumb {
+  background: var(--sig-line-strong); border-radius: 6px; border: 2px solid var(--sig-paper);
+}
+
+.signum-app .hidden { display: none !important; }
+.signum-app .visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}

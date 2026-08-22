@@ -1289,6 +1289,15 @@ em {
   border-radius: var(--radius-1);
 }
 .dm-product-card__name { margin: 0; }
+.dm-product-card__name--plain {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(24px, 3vw, 30px);
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  color: var(--smoke-7);
+  line-height: 1;
+}
 .dm-product-card__tagline {
   font-family: var(--font-mono);
   font-size: 11px;
