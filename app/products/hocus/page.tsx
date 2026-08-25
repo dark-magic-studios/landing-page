@@ -3,6 +3,7 @@ import Image from "next/image";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import HocusCast, { type HocusPersona } from "@/components/HocusCast";
+import TrackedLink from "@/components/TrackedLink";
 
 export const metadata: Metadata = {
   title: "Hocus — Dark Magic Studios",
@@ -244,17 +245,27 @@ export default function HocusPage() {
               Cursor, and Antigravity.
             </p>
             <div className="hocus-hero__actions">
-              <a
+              <TrackedLink
                 className="hocus-btn hocus-btn--primary hocus-btn--lg"
                 href={HOCUS_GITHUB}
+                external
                 target="_blank"
                 rel="noopener noreferrer"
+                eventName="tool_link_click"
+                eventCategory="tool_engagement"
+                eventLabel="hocus_hero_github"
               >
                 View on GitHub
-              </a>
-              <a className="hocus-btn hocus-btn--ghost hocus-btn--lg" href="/products">
+              </TrackedLink>
+              <TrackedLink
+                className="hocus-btn hocus-btn--ghost hocus-btn--lg"
+                href="/products"
+                eventName="nav_click"
+                eventCategory="navigation"
+                eventLabel="hocus_hero_all_products"
+              >
                 All products
-              </a>
+              </TrackedLink>
             </div>
             <p className="hocus-hero__meta">
               Dark Magic Studios · MIT license · npm i -g {HOCUS_NPM}
@@ -388,17 +399,27 @@ hocus cast
 hocus sync`}</pre>
               </div>
               <div className="hocus-section__actions">
-                <a
+                <TrackedLink
                   className="hocus-btn hocus-btn--primary"
                   href={HOCUS_GITHUB}
+                  external
                   target="_blank"
                   rel="noopener noreferrer"
+                  eventName="tool_link_click"
+                  eventCategory="tool_engagement"
+                  eventLabel="hocus_install_github"
                 >
                   View on GitHub
-                </a>
-                <a className="hocus-btn hocus-btn--ghost" href="/products">
+                </TrackedLink>
+                <TrackedLink
+                  className="hocus-btn hocus-btn--ghost"
+                  href="/products"
+                  eventName="nav_click"
+                  eventCategory="navigation"
+                  eventLabel="hocus_install_all_products"
+                >
                   All products
-                </a>
+                </TrackedLink>
               </div>
               <p className="hocus-section__fine">
                 MIT license · Dark Magic Studios · github.com/dark-magic-studios/hocus

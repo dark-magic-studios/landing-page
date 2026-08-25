@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import TrackedLink from "@/components/TrackedLink";
 
 export default function Footer() {
   return (
@@ -19,24 +19,24 @@ export default function Footer() {
         <div className="dm-footer__cols">
           <div>
             <div className="dm-footer__head">Studio</div>
-            <Link className="dm-footer__link" href="/#studio">About</Link>
-            <Link className="dm-footer__link" href="/#software">Apps &amp; Tech</Link>
-            <Link className="dm-footer__link" href="/#engagement">Process</Link>
+            <TrackedLink className="dm-footer__link" href="/#studio" eventName="nav_click" eventCategory="navigation" eventLabel="footer_about">About</TrackedLink>
+            <TrackedLink className="dm-footer__link" href="/#software" eventName="nav_click" eventCategory="navigation" eventLabel="footer_apps_tech">Apps &amp; Tech</TrackedLink>
+            <TrackedLink className="dm-footer__link" href="/#engagement" eventName="nav_click" eventCategory="navigation" eventLabel="footer_process">Process</TrackedLink>
           </div>
           <div>
             <div className="dm-footer__head">Contact</div>
-            <a className="dm-footer__link" href="mailto:hello@darkmagicstudios.com">hello@darkmagicstudios.com</a>
+            <TrackedLink className="dm-footer__link" href="mailto:hello@darkmagicstudios.com" external eventName="email_click" eventCategory="contact" eventLabel="footer">hello@darkmagicstudios.com</TrackedLink>
           </div>
           <div>
             <div className="dm-footer__head">Products</div>
-            <a className="dm-footer__link" href="/products">All products</a>
-            <a className="dm-footer__link" href="/products/hocus">Hocus</a>
+            <TrackedLink className="dm-footer__link" href="/products" eventName="nav_click" eventCategory="navigation" eventLabel="footer_all_products">All products</TrackedLink>
+            <TrackedLink className="dm-footer__link" href="/products/hocus" eventName="nav_click" eventCategory="navigation" eventLabel="footer_hocus">Hocus</TrackedLink>
           </div>
           <div>
             <div className="dm-footer__head">Familiars</div>
-            <a className="dm-footer__link" href="/familiars#apply">Apply quietly</a>
-            <a className="dm-footer__link" href="/familiars#rates">Rates &amp; rules</a>
-            <a className="dm-footer__link" href="/familiars#cover">Cover identities</a>
+            <TrackedLink className="dm-footer__link" href="/familiars#apply" eventName="nav_click" eventCategory="navigation" eventLabel="footer_familiars_apply">Apply quietly</TrackedLink>
+            <TrackedLink className="dm-footer__link" href="/familiars#rates" eventName="nav_click" eventCategory="navigation" eventLabel="footer_familiars_rates">Rates &amp; rules</TrackedLink>
+            <TrackedLink className="dm-footer__link" href="/familiars#cover" eventName="nav_click" eventCategory="navigation" eventLabel="footer_familiars_cover">Cover identities</TrackedLink>
           </div>
         </div>
       </div>

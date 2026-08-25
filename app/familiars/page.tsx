@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import TrackedLink from "@/components/TrackedLink";
 
 export const metadata: Metadata = {
   title: "Familiars — Dark Magic Studios",
@@ -53,9 +54,16 @@ export default function FamiliarsPage() {
                 </ul>
               </div>
               <div className="dm-veil-section__actions">
-                <a className="dm-btn dm-btn--primary" href="mailto:hello@darkmagicstudios.com">
+                <TrackedLink
+                  className="dm-btn dm-btn--primary"
+                  href="mailto:hello@darkmagicstudios.com"
+                  external
+                  eventName="email_click"
+                  eventCategory="contact"
+                  eventLabel="familiars_apply"
+                >
                   Send a note
-                </a>
+                </TrackedLink>
               </div>
             </div>
           </section>

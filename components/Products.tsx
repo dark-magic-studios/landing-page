@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import TrackedLink from "@/components/TrackedLink";
 
 const HOCUS_GITHUB = "https://github.com/dark-magic-studios/hocus";
 
@@ -48,24 +48,40 @@ export default function Products() {
           </div>
         </div>
         <div className="dm-products-teaser__actions">
-          <Link className="hocus-btn hocus-btn--primary" href="/products/hocus">
+          <TrackedLink
+            className="hocus-btn hocus-btn--primary"
+            href="/products/hocus"
+            eventName="nav_click"
+            eventCategory="navigation"
+            eventLabel="products_teaser_learn_more"
+          >
             Learn more
-          </Link>
-          <a
+          </TrackedLink>
+          <TrackedLink
             className="hocus-btn hocus-btn--ghost"
             href={HOCUS_GITHUB}
+            external
             target="_blank"
             rel="noopener noreferrer"
+            eventName="tool_link_click"
+            eventCategory="tool_engagement"
+            eventLabel="hocus_github_teaser"
           >
             View on GitHub
-          </a>
+          </TrackedLink>
         </div>
       </div>
 
       <div className="dm-products-teaser__footer">
-        <Link className="dm-products-teaser__all" href="/products">
+        <TrackedLink
+          className="dm-products-teaser__all"
+          href="/products"
+          eventName="nav_click"
+          eventCategory="navigation"
+          eventLabel="view_all_products"
+        >
           View all products →
-        </Link>
+        </TrackedLink>
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import TrackedLink from "@/components/TrackedLink";
 
 export default function Hero() {
   return (
@@ -32,12 +33,24 @@ export default function Hero() {
         </p>
 
         <div className="dm-hero__cta-row">
-          <a className="dm-btn dm-btn--primary" href="#products">
+          <TrackedLink
+            className="dm-btn dm-btn--primary"
+            href="#products"
+            eventName="nav_click"
+            eventCategory="navigation"
+            eventLabel="hero_explore_products"
+          >
             Explore products
-          </a>
-          <a className="dm-btn dm-btn--ghost" href="#software">
+          </TrackedLink>
+          <TrackedLink
+            className="dm-btn dm-btn--ghost"
+            href="#software"
+            eventName="nav_click"
+            eventCategory="navigation"
+            eventLabel="hero_our_software"
+          >
             Our software →
-          </a>
+          </TrackedLink>
         </div>
 
         <div className="dm-hero__meta" aria-label="Studio statistics">
