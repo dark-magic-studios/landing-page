@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import TrackedLink from "@/components/TrackedLink";
 
 export const metadata: Metadata = {
   title: "Products — Dark Magic Studios",
@@ -73,17 +73,27 @@ export default function ProductsPage() {
                 </div>
 
                 <div className="dm-product-card__actions">
-                  <Link className="hocus-btn hocus-btn--primary" href={product.href}>
+                  <TrackedLink
+                    className="hocus-btn hocus-btn--primary"
+                    href={product.href}
+                    eventName="nav_click"
+                    eventCategory="navigation"
+                    eventLabel={`product_learn_more_${product.slug}`}
+                  >
                     Learn more
-                  </Link>
-                  <a
+                  </TrackedLink>
+                  <TrackedLink
                     className="hocus-btn hocus-btn--ghost"
                     href={product.github}
+                    external
                     target="_blank"
                     rel="noopener noreferrer"
+                    eventName="tool_link_click"
+                    eventCategory="tool_engagement"
+                    eventLabel={`github_${product.slug}`}
                   >
                     View on GitHub
-                  </a>
+                  </TrackedLink>
                 </div>
               </article>
             ))}

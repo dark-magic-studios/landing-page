@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { trackEvent } from "@/lib/gtag";
 
 const navLinks = [
   { id: "studio", href: "/#studio", label: "The studio" },
@@ -37,13 +38,22 @@ export default function NavBar() {
 
       <div className="dm-nav__links">
         {navLinks.map((l) => (
-          <Link key={l.id} href={l.href} className="dm-nav__link">
+          <Link
+            key={l.id}
+            href={l.href}
+            className="dm-nav__link"
+            onClick={() => trackEvent("nav_click", { category: "navigation", label: l.id })}
+          >
             {l.label}
           </Link>
         ))}
       </div>
 
-      <Link className="dm-btn dm-btn--ghost-outline" href="/products/hocus">
+      <Link
+        className="dm-btn dm-btn--ghost-outline"
+        href="/products/hocus"
+        onClick={() => trackEvent("nav_click", { category: "navigation", label: "explore_hocus" })}
+      >
         Explore Hocus
       </Link>
     </nav>

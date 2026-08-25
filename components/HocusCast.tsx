@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackEvent } from "@/lib/gtag";
 
 export interface HocusPersona {
   glyph: string;
@@ -32,7 +33,16 @@ export default function HocusCast({ personas }: HocusCastProps) {
             <button
               type="button"
               className="hocus-cast-card__head"
-              onClick={() => setOpen(isOpen ? null : persona.name)}
+              onClick={() => {
+                const next = isOpen ? null : persona.name;
+                setOpen(next);
+                if (next) {
+                  trackEvent("persona_card_expand", {
+                    category: "tool_engagement",
+                    label: persona.name,
+                  });
+                }
+              }}
               aria-expanded={isOpen}
               aria-controls={panelId}
             >

@@ -1,3 +1,5 @@
+import TrackedLink from "@/components/TrackedLink";
+
 const EMAIL = "hello@darkmagicstudios.com";
 
 export default function Contact() {
@@ -21,16 +23,30 @@ export default function Contact() {
 
       <div className="dm-contact__card">
         <div className="dm-contact__card-label">Email</div>
-        <a className="dm-contact__card-email" href={`mailto:${EMAIL}`}>
+        <TrackedLink
+          className="dm-contact__card-email"
+          href={`mailto:${EMAIL}`}
+          external
+          eventName="email_click"
+          eventCategory="contact"
+          eventLabel="contact_section_address"
+        >
           {EMAIL}
-        </a>
+        </TrackedLink>
         <p className="dm-contact__card-note">
           No forms, no friction. Write to us and a human on the engineering team
           will get back to you.
         </p>
-        <a className="dm-btn dm-btn--primary dm-btn--lg" href={`mailto:${EMAIL}`}>
+        <TrackedLink
+          className="dm-btn dm-btn--primary dm-btn--lg"
+          href={`mailto:${EMAIL}`}
+          external
+          eventName="email_click"
+          eventCategory="contact"
+          eventLabel="contact_section_cta"
+        >
           Write to us
-        </a>
+        </TrackedLink>
       </div>
     </section>
   );
