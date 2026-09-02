@@ -1,4 +1,4 @@
-import { NotebookPen, Signature, Vote, HeartPulse } from "lucide-react";
+import { Signature, Vote, HeartPulse } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export type ProductStatus = "live" | "free" | "building" | "soon";
@@ -46,7 +46,7 @@ export const BUILDING: Product[] = [
     status: "building",
     statusLabel: "In development",
     href: "/products/vitreus",
-    Icon: NotebookPen,
+    mark: "/products/vitreus/mark.png",
   },
 ];
 

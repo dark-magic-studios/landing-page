@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import TrackedLink from "@/components/TrackedLink";
@@ -7,6 +8,12 @@ export const metadata: Metadata = {
   title: "Vitreus — Dark Magic Studios",
   description:
     "Vitreus is an AI-assisted Obsidian vault for tasks, project tracking, and journaling. Your tools, your files, your API keys — running locally through a harness you control.",
+  openGraph: {
+    title: "Vitreus — your AI harness for Obsidian",
+    description:
+      "An AI-assisted Obsidian vault for tasks, project tracking, and journaling. Your files, your keys, running locally.",
+    images: ["/products/vitreus/header.png"],
+  },
 };
 
 const BOX = [
@@ -55,6 +62,14 @@ export default function VitreusPage() {
         <section className="dm-subpage-hero">
           <div className="dm-subpage-hero__veil" aria-hidden="true" />
           <div className="dm-container dm-subpage-hero__inner">
+            <Image
+              src="/products/vitreus/mark.png"
+              alt=""
+              width={512}
+              height={512}
+              className="dm-subpage-hero__mark"
+              priority
+            />
             <div className="dm-eyebrow">Vitreus · In development</div>
             <h1 className="dm-subpage-hero__title">
               Your work, in plain<br />Markdown, kept current.

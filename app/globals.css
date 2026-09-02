@@ -1152,6 +1152,13 @@ em {
 }
 
 .dm-subpage-hero .dm-product-tools { margin-top: 28px; }
+.dm-subpage-hero__mark {
+  display: block;
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  margin-bottom: 28px;
+}
 .dm-product-tools {
   display: flex;
   flex-wrap: wrap;
