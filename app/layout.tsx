@@ -33,9 +33,21 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Dark Magic Studios",
+  metadataBase: new URL("https://darkmagicstudios.com"),
+  title: {
+    default: "Dark Magic Studios — apps, tools & software",
+    template: "%s",
+  },
   description:
-    "We finish what you started. A ghost studio for indie game developers — art, code, and narrative rescue, shipped under your name.",
+    "A small independent studio building developer tools, apps, and game systems. Hocus and Vitreus in development, Signum free in your browser, Forgeboard and Pulsebook on the way.",
+  openGraph: {
+    title: "Dark Magic Studios — apps, tools & software",
+    description:
+      "A small independent studio building developer tools, apps, and game systems.",
+    url: "/",
+    siteName: "Dark Magic Studios",
+    type: "website",
+  },
   icons: [{ rel: "icon", url: "/vector.ico" }],
 };
 

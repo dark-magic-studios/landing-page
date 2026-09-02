@@ -11,13 +11,13 @@ export default function Contact() {
           Get in <em>touch.</em>
         </h2>
         <p className="dm-contact__lede">
-          Have an inquiry regarding our software products, game systems, or technical
-          collaborations? Reach our engineering team directly by email — we read
-          every message and reply within 48 hours.
+          Questions about a product, an idea for one, or a project you want built?
+          Email is the whole process. We read everything and usually reply within a
+          day or two.
         </p>
         <div className="dm-contact__fineprint">
-          <div>Independent studio.</div>
-          <div>Open source software, developer tooling, &amp; games.</div>
+          <div>Small independent studio.</div>
+          <div>Developer tools, apps, &amp; game systems.</div>
         </div>
       </div>
 
@@ -34,8 +34,8 @@ export default function Contact() {
           {EMAIL}
         </TrackedLink>
         <p className="dm-contact__card-note">
-          No forms, no friction. Write to us and a human on the engineering team
-          will get back to you.
+          No forms, no funnels, no discovery call before the discovery call. Write
+          to us and you get a real reply.
         </p>
         <TrackedLink
           className="dm-btn dm-btn--primary dm-btn--lg"
