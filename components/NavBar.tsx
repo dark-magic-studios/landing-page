@@ -6,11 +6,8 @@ import Link from "next/link";
 import { trackEvent } from "@/lib/gtag";
 
 const navLinks = [
-  { id: "studio", href: "/#studio", label: "The studio" },
-  { id: "software", href: "/#software", label: "Apps & Tech" },
-  { id: "work", href: "/#work", label: "Software" },
+  { id: "services", href: "/services", label: "Services" },
   { id: "products", href: "/products", label: "Products" },
-  { id: "tools", href: "/tools", label: "Tools" },
 ];
 
 export default function NavBar() {
@@ -51,10 +48,10 @@ export default function NavBar() {
 
       <Link
         className="dm-btn dm-btn--ghost-outline"
-        href="/products/hocus"
-        onClick={() => trackEvent("nav_click", { category: "navigation", label: "explore_hocus" })}
+        href="mailto:hello@darkmagicstudios.com"
+        onClick={() => trackEvent("email_click", { category: "contact", label: "navbar" })}
       >
-        Explore Hocus
+        Get in touch
       </Link>
     </nav>
   );

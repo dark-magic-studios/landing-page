@@ -1,28 +1,37 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import ProductCard from "@/components/ProductCard";
 import TrackedLink from "@/components/TrackedLink";
+import { BUILDING, FREE_TOOLS, COMING_SOON } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "Products — Dark Magic Studios",
   description:
-    "Open-source tools from Dark Magic Studios. Hocus compiles one SOUL.md persona into Claude Code, OpenCode, Cursor, and Antigravity formats.",
+    "Everything Dark Magic Studios is building: Hocus and Vitreus in active development, Signum free in the browser, Forgeboard and Pulsebook on the way.",
 };
 
-const HOCUS_GITHUB = "https://github.com/dark-magic-studios/hocus";
-
-const PRODUCTS = [
+const GROUPS = [
   {
-    slug: "hocus",
-    name: "hocus",
-    tagline: "thirteen agents · one repo · zero stand ups",
-    description:
-      "Multi-agent harness generator. Write one SOUL.md persona once — compile to Claude Code, OpenCode, Cursor, and Antigravity.",
-    tools: ["Claude Code", "OpenCode", "Cursor", "Antigravity"],
-    status: "Launch",
-    href: "/products/hocus",
-    github: HOCUS_GITHUB,
+    id: "building",
+    eyebrow: "— In our hands now",
+    title: "Building",
+    lede: "The two products taking most of our week. Hocus is out and usable today; Vitreus is close.",
+    items: BUILDING,
+  },
+  {
+    id: "free",
+    eyebrow: "— Free, no account",
+    title: "Free tools",
+    lede: "Small utilities that run entirely in your browser. Nothing to install, nothing uploaded, no sign-up.",
+    items: FREE_TOOLS,
+  },
+  {
+    id: "soon",
+    eyebrow: "— On the bench",
+    title: "Coming",
+    lede: "Next out of the workshop. No dates yet — we would rather show them late than promise them early.",
+    items: COMING_SOON,
   },
 ];
 
@@ -36,67 +45,47 @@ export default function ProductsPage() {
           <div className="dm-container dm-subpage-hero__inner">
             <div className="dm-eyebrow">Products</div>
             <h1 className="dm-subpage-hero__title">
-              Instruments we<br />release into the wild.
+              Everything we&apos;re<br />building right now.
             </h1>
             <p className="dm-subpage-hero__lede">
-              Open-source tools built for the same multi-agent workflows we use
-              behind the veil. MIT licensed. No stand ups required.
+              Two products in active development, one free tool you can use in the
+              next thirty seconds, and two more on the bench. This page is the whole
+              list — if it isn&apos;t here, we aren&apos;t working on it.
             </p>
           </div>
         </section>
 
         <div className="dm-container dm-product-gallery">
-          <div className="dm-product-gallery__grid">
-            {PRODUCTS.map((product) => (
-              <article key={product.slug} className="dm-product-card">
-                <div className="dm-product-card__header">
-                  <Image
-                    src={`/products/${product.slug}/mark.png`}
-                    alt=""
-                    width={40}
-                    height={40}
-                    className="dm-product-card__mark"
-                  />
-                  <span className="dm-product-card__status">{product.status}</span>
-                </div>
+          {GROUPS.map((group) => (
+            <section key={group.id} id={group.id} className="dm-product-group">
+              <div className="dm-product-group__head">
+                <div className="dm-eyebrow">{group.eyebrow}</div>
+                <h2 className="dm-product-group__title">{group.title}</h2>
+                <p className="dm-product-group__lede">{group.lede}</p>
+              </div>
+              <div className="dm-product-gallery__grid">
+                {group.items.map((product) => (
+                  <ProductCard key={product.slug} product={product} />
+                ))}
+              </div>
+            </section>
+          ))}
 
-                <div className="hocus-wordmark dm-product-card__name">{product.name}</div>
-                <p className="dm-product-card__tagline">{product.tagline}</p>
-                <p className="dm-product-card__desc">{product.description}</p>
-
-                <div className="dm-product-tools" aria-label="Supported agent tools">
-                  {product.tools.map((tool) => (
-                    <span key={tool} className="dm-product-tool">
-                      {tool}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="dm-product-card__actions">
-                  <TrackedLink
-                    className="hocus-btn hocus-btn--primary"
-                    href={product.href}
-                    eventName="nav_click"
-                    eventCategory="navigation"
-                    eventLabel={`product_learn_more_${product.slug}`}
-                  >
-                    Learn more
-                  </TrackedLink>
-                  <TrackedLink
-                    className="hocus-btn hocus-btn--ghost"
-                    href={product.github}
-                    external
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    eventName="tool_link_click"
-                    eventCategory="tool_engagement"
-                    eventLabel={`github_${product.slug}`}
-                  >
-                    View on GitHub
-                  </TrackedLink>
-                </div>
-              </article>
-            ))}
+          <div className="dm-product-gallery__footer">
+            <p className="dm-product-gallery__note">
+              Want one of these to do something it doesn&apos;t do yet? Tell us — we
+              read every message.
+            </p>
+            <TrackedLink
+              className="dm-btn dm-btn--primary"
+              href="mailto:hello@darkmagicstudios.com"
+              external
+              eventName="email_click"
+              eventCategory="contact"
+              eventLabel="products_page_footer"
+            >
+              Write to us
+            </TrackedLink>
           </div>
         </div>
       </main>

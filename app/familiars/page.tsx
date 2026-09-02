@@ -4,8 +4,8 @@ import Footer from "@/components/Footer";
 import TrackedLink from "@/components/TrackedLink";
 
 export const metadata: Metadata = {
-  title: "Familiars — Dark Magic Studios",
-  description: "Join the Dark Magic Studios contractor network. Rates, rules, and how to apply quietly.",
+  title: "Apply to work with us — Dark Magic Studios",
+  description: "Apply to work with Dark Magic Studios as a familiar — the contractors and collaborators who build alongside us. Rates, rules, and how to apply quietly.",
 };
 
 export default function FamiliarsPage() {
@@ -16,7 +16,7 @@ export default function FamiliarsPage() {
         <section className="dm-subpage-hero">
           <div className="dm-subpage-hero__veil" aria-hidden="true" />
           <div className="dm-container dm-subpage-hero__inner">
-            <div className="dm-eyebrow">Familiars</div>
+            <div className="dm-eyebrow">Familiars · Apply to work with us</div>
             <h1 className="dm-subpage-hero__title">We are always looking<br />for the right kind of quiet.</h1>
             <p className="dm-subpage-hero__lede">
               Familiars are the contractors and collaborators who do the actual

@@ -1,4 +1,4 @@
-import { Terminal, Gamepad2, Cpu } from "lucide-react";
+import { Terminal, Gamepad2, AppWindow } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 const DOMAINS: {
@@ -11,37 +11,37 @@ const DOMAINS: {
   {
     Icon: Terminal,
     eyebrow: "Pillar · I",
-    title: "Developer tools & harnesses",
-    body: "Multi-agent harness generators, CLI command decks, and developer tooling. We build tools like Hocus that compile declarative agent personas across Claude Code, OpenCode, Cursor, and Antigravity.",
-    rule: "Open-source developer instruments built for modern agentic workflows.",
+    title: "Developer tools & agent harnesses",
+    body: "Command-line tools, TUIs, and the scaffolding that keeps AI coding agents useful past the first prompt. Hocus and Vitreus both came out of this — we build these for ourselves first, then ship the ones that survive daily use.",
+    rule: "Built for the way people actually work with agents.",
+  },
+  {
+    Icon: AppWindow,
+    eyebrow: "Pillar · II",
+    title: "Apps & web software",
+    body: "Desktop and web applications that stay small: fast to open, cheap to run, and understandable a year later. We favour boring, well-understood stacks and client-side work over a server whenever the job allows it.",
+    rule: "No framework we can't justify, no dependency we can't replace.",
   },
   {
     Icon: Gamepad2,
-    eyebrow: "Pillar · II",
-    title: "Interactive games & engines",
-    body: "Custom game engines, high-framerate sprite renderers, and deterministic physics logic. From pixel-art roguelikes to complex simulation logic in Unity, Godot, Unreal, and C++.",
-    rule: "Low-latency game architecture designed for feel and precision.",
-  },
-  {
-    Icon: Cpu,
     eyebrow: "Pillar · III",
-    title: "Software apps & protocols",
-    body: "High-performance desktop applications, binary serialization protocols, and reactive web applications. We focus on zero-bloat architecture, low memory footprints, and fast execution.",
-    rule: "Clean codebases built to scale without unnecessary dependencies.",
+    title: "Games & game systems",
+    body: "Simulation logic, save formats, and the systems underneath a game rather than the art on top of it. Deterministic state, sane data models, and tooling the designers can use without asking an engineer.",
+    rule: "The unglamorous half of a game, done properly.",
   },
 ];
 
-export default function Services() {
+export default function Services({ id = "software" }: { id?: string }) {
   return (
-    <section className="dm-services" id="software" aria-labelledby="software-heading">
+    <section className="dm-services" id={id} aria-labelledby="software-heading">
       <div className="dm-section__head">
-        <div className="dm-eyebrow">— Core focus</div>
+        <div className="dm-eyebrow">— Three areas</div>
         <h2 id="software-heading" className="dm-section__title">
-          Three pillars of <em>software.</em>
+          Three kinds of <em>work.</em>
         </h2>
         <p className="dm-section__lede">
-          We do not build generic landing pages or fluff. We engineer tools, games,
-          and software platforms built for performance and durability.
+          The same three areas whether it is our product or yours — because it is
+          the work we are already good at.
         </p>
       </div>
 
@@ -59,4 +59,3 @@ export default function Services() {
     </section>
   );
 }
-
