@@ -56,7 +56,7 @@ const WORKFLOW = [
   {
     cmd: "hocus init",
     title: "Initialize",
-    body: "Run once in your repo. Writes AGENTS.md, CLAUDE.md, PRODUCT.md, MEMORY.md, TASKS.md and _spells/, copies the persona cast into .hocus/personas/, installs bundled skills, asks Silicon Valley or Wizards, and spawns an interactive session with the founder persona.",
+    body: "Run once in your repo. Writes AGENTS.md, CLAUDE.md, PRODUCT.md, MEMORY.md, TASKS.md, _potions/ and _spells/, copies the persona cast into .hocus/personas/, installs bundled skills and starter spells, asks Silicon Valley or Wizards, and spawns an interactive session with the founder persona using your preferred agent CLI (claude, opencode, codex, agy, cursor, or copilot).",
   },
   {
     cmd: "hocus cast",
@@ -71,31 +71,50 @@ const WORKFLOW = [
   {
     cmd: "hocus sync",
     title: "Refresh",
-    body: "Cheap rebuild of dashboard.html from .hocus/personas/ and _spells/ without recompiling agent files. Run often; run cast when the repo itself has changed.",
+    body: "Cheap rebuild of dashboard.html from .hocus/personas/, _potions/ and _spells/ without recompiling agent files. Run often; run cast when the repo itself has changed.",
   },
 ];
 
-/** Interactive command deck — the six tabs of `hocus tui`. */
+/** Hocus-native repo artifacts, distinct from the shared SKILL.md standard. */
+const ARTIFACTS = [
+  {
+    name: "Potions",
+    path: "_potions/<potion-id>.md",
+    note: "Multi-step feature battle plans. The planner drafts one before any code is written — goal, acceptance criteria, assignee — and the orchestrator keeps its status (draft → casting → sealed) and progress current as work lands.",
+  },
+  {
+    name: "Spells",
+    path: "_spells/{incantations,wards,curses}/",
+    note: "Atomic single-purpose conventions. Incantations are fixed output templates; wards fire an incantation automatically on a lifecycle event (pre-commit, on-pr-open…); curses are hard or soft stop conditions an agent must never violate.",
+  },
+  {
+    name: "Skills",
+    path: ".agents/skills/<name>/ · .claude/skills/<name>/",
+    note: "The shared open SKILL.md standard — no translation layer needed. One file, mirrored per tool, covers every target. 14 skills are persona-bound and renamed with the cast; the rest are generic.",
+  },
+];
+
+/** Interactive command deck — the seven tabs of `hocus tui`, switched with Tab / Shift-Tab or keys 1–7. */
 const DECK_TABS = [
   {
     key: "1",
-    name: "Séance",
-    body: "Agent chat deck. Tab cycles personas, Ctrl+B cycles backends (Claude, Codex, Antigravity, custom), / triggers command and skill autocomplete, @ mentions repo files.",
+    name: "Potions",
+    body: "Active feature plans — in-flight specs, architectural blueprints, and step-by-step battle plans tracked in _potions/, each with a status (draft → casting → sealed) and a progress percentage.",
   },
   {
     key: "2",
     name: "Spells",
-    body: "In-flight feature specs, architectural blueprints, and step-by-step battle plans tracked in _spells/.",
+    body: "Conventions and guardrails in _spells/: incantations (output templates), wards (lifecycle hooks that fire automatically), and curses (hard or soft stop conditions).",
   },
   {
     key: "3",
     name: "Souls",
-    body: "Persona inspector — browse installed SOUL.md files, inspect metadata, voice, triggers, and schema validation.",
+    body: "Persona inspector — browse installed SOUL.md files, inspect metadata, voice, triggers, and frontmatter schema validation.",
   },
   {
     key: "4",
     name: "Coven",
-    body: "Agent topology — parent/child hierarchy, delegation structure, and orchestrator relationships.",
+    body: "Agent topology — parent/child hierarchy graphs, delegation structure, and orchestrator relationships.",
   },
   {
     key: "5",
@@ -105,7 +124,12 @@ const DECK_TABS = [
   {
     key: "6",
     name: "Scrying",
-    body: "Repository stack scanner detecting languages and frameworks, paired with live compilation status for every target tool.",
+    body: "Repository stack scanner detecting languages, frameworks, and build systems, paired with live compilation status for every target tool.",
+  },
+  {
+    key: "7",
+    name: "Séance",
+    body: "Agent chat deck. Tab cycles personas, Ctrl+B cycles backends (Claude, Codex, Antigravity, custom), / triggers command and skill autocomplete plus built-ins like /status and /sync, @ mentions repo files.",
   },
 ];
 
@@ -417,6 +441,33 @@ export default function HocusPage() {
 
           <div className="hocus-rule" aria-hidden="true" />
 
+          <section id="artifacts" className="hocus-section">
+            <div className="hocus-section__meta">
+              <div className="hocus-eyebrow">The artifacts</div>
+              <h2 className="hocus-section__title">Potions, spells, skills</h2>
+            </div>
+            <div className="hocus-section__body">
+              <p>
+                Alongside the persona files, <code className="hocus-mono">hocus init</code>{" "}
+                scaffolds three kinds of repo artifact. A{" "}
+                <strong>potion</strong> is a whole workflow; a <strong>spell</strong> is
+                a single rule an agent follows while doing one; a{" "}
+                <strong>skill</strong> is the external, tool-agnostic standard.
+              </p>
+              <div className="hocus-targets">
+                {ARTIFACTS.map((a) => (
+                  <div key={a.name} className="hocus-target">
+                    <div className="hocus-target__tool">{a.name}</div>
+                    <code className="hocus-target__path">{a.path}</code>
+                    <p className="hocus-target__note">{a.note}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <div className="hocus-rule" aria-hidden="true" />
+
           <section id="deck" className="hocus-section">
             <div className="hocus-section__meta">
               <div className="hocus-eyebrow">The command deck</div>
@@ -427,8 +478,10 @@ export default function HocusPage() {
                 Running <code className="hocus-mono">hocus</code> with no arguments
                 launches an interactive terminal deck for managing personas,
                 tracking battle plans, chatting with agents, and watching
-                compilation state. Six tabs, switched with{" "}
-                <code className="hocus-mono">Tab</code> or the number keys.
+                compilation state. Seven tabs, switched with{" "}
+                <code className="hocus-mono">Tab</code> /{" "}
+                <code className="hocus-mono">Shift-Tab</code> or the number keys{" "}
+                <code className="hocus-mono">1</code>–<code className="hocus-mono">7</code>.
               </p>
               <div className="hocus-workflow">
                 {DECK_TABS.map((tab) => (
@@ -465,8 +518,8 @@ export default function HocusPage() {
                 <code className="hocus-mono">--cast valley</code> /{" "}
                 <code className="hocus-mono">--cast wizard</code>. The choice is
                 cosmetic but it touches file names, skill IDs, and slash commands
-                (<code className="hocus-mono">/merlin-draft-spell</code> vs{" "}
-                <code className="hocus-mono">/richard-draft-spell</code>); it&apos;s
+                (<code className="hocus-mono">/merlin-draft-potion</code> vs{" "}
+                <code className="hocus-mono">/richard-draft-potion</code>); it&apos;s
                 saved in <code className="hocus-mono">.hocus/config.json</code> and
                 sets the dashboard default. Roles, voices, glyphs, and behavior are
                 identical either way, and <code className="hocus-mono">?cast=valley</code>{" "}
