@@ -8,7 +8,7 @@ import TrackedLink from "@/components/TrackedLink";
 export const metadata: Metadata = {
   title: "Hocus — Dark Magic Studios",
   description:
-    "Hocus is a multi-agent harness generator. Write one SOUL.md persona once and compile it into Claude Code, OpenCode, Cursor, and Antigravity formats.",
+    "Hocus is a multi-agent harness generator and interactive command deck. Write one SOUL.md persona once and compile it into Claude Code, OpenCode, Codex, Cursor, Antigravity, Command Code, and GitHub Copilot formats.",
 };
 
 const HOCUS_GITHUB = "https://github.com/dark-magic-studios/hocus";
@@ -26,14 +26,29 @@ const TARGETS = [
     note: "Same shape, different frontmatter keys (mode: subagent).",
   },
   {
+    tool: "Codex",
+    path: ".codex/agents/<slug>.toml",
+    note: "Native TOML custom-agent config; repository skills load from .agents/skills/.",
+  },
+  {
     tool: "Cursor",
     path: ".cursor/rules/<slug>.mdc",
-    note: 'Compiled as an "Agent Requested" rule — conditionally loaded by description.',
+    note: 'No native subagents — compiled as an "Agent Requested" rule, conditionally loaded by description.',
   },
   {
     tool: "Antigravity",
-    path: ".agents/rules/<slug>.md",
-    note: "Advisory context for the orchestrator — not a callable agent.",
+    path: ".agents/agents/<slug>/agent.md",
+    note: "Native custom subagents, discovered by directory with subagent: true frontmatter.",
+  },
+  {
+    tool: "Command Code",
+    path: ".commandcode/agents/<slug>.md",
+    note: "Markdown + YAML frontmatter; every agent gets Taste compatibility instructions baked in.",
+  },
+  {
+    tool: "GitHub Copilot",
+    path: ".github/agents/<slug>.agent.md",
+    note: "Compiled when .github/ is present or --copilot is passed; skills mirror to .github/skills/.",
   },
 ];
 
@@ -41,22 +56,56 @@ const WORKFLOW = [
   {
     cmd: "hocus init",
     title: "Initialize",
-    body: "Run once in your repo. Writes AGENTS.md, CLAUDE.md, PRODUCT.md, copies the persona cast into .hocus/personas/, installs bundled skills, and spawns an interactive session with the founder persona.",
+    body: "Run once in your repo. Writes AGENTS.md, CLAUDE.md, PRODUCT.md, MEMORY.md, TASKS.md and _spells/, copies the persona cast into .hocus/personas/, installs bundled skills, asks Silicon Valley or Wizards, and spawns an interactive session with the founder persona.",
   },
   {
     cmd: "hocus cast",
     title: "Compile",
-    body: "Scans the repo for language and framework signals, tailors each persona with that context, and compiles for every detected tool — Claude Code, OpenCode, Cursor, and Antigravity.",
+    body: "Scans the repo for language and framework signals, tailors each persona with that context, and compiles native formats for every detected target — Claude Code, OpenCode, Codex, Cursor, Antigravity, Command Code, and GitHub Copilot.",
   },
   {
-    cmd: "hocus skill add",
+    cmd: "hocus add",
     title: "Extend",
-    body: "Installs a skill into .claude/skills/ and .agents/skills/. Skills use the shared SKILL.md standard — one file, all four tools.",
+    body: "Adds a persona or a skill to selected providers, locally or globally — hocus skill add <name> is the shorthand for a skill. Skills use the shared SKILL.md standard: one file, every tool.",
   },
   {
     cmd: "hocus sync",
     title: "Refresh",
-    body: "Cheap refresh of dashboard.html from .hocus/personas/ and _spells/. Run often; run cast when the repo itself has changed.",
+    body: "Cheap rebuild of dashboard.html from .hocus/personas/ and _spells/ without recompiling agent files. Run often; run cast when the repo itself has changed.",
+  },
+];
+
+/** Interactive command deck — the six tabs of `hocus tui`. */
+const DECK_TABS = [
+  {
+    key: "1",
+    name: "Séance",
+    body: "Agent chat deck. Tab cycles personas, Ctrl+B cycles backends (Claude, Codex, Antigravity, custom), / triggers command and skill autocomplete, @ mentions repo files.",
+  },
+  {
+    key: "2",
+    name: "Spells",
+    body: "In-flight feature specs, architectural blueprints, and step-by-step battle plans tracked in _spells/.",
+  },
+  {
+    key: "3",
+    name: "Souls",
+    body: "Persona inspector — browse installed SOUL.md files, inspect metadata, voice, triggers, and schema validation.",
+  },
+  {
+    key: "4",
+    name: "Coven",
+    body: "Agent topology — parent/child hierarchy, delegation structure, and orchestrator relationships.",
+  },
+  {
+    key: "5",
+    name: "Grimoire",
+    body: "Skill management across .agents/skills/ and .claude/skills/.",
+  },
+  {
+    key: "6",
+    name: "Scrying",
+    body: "Repository stack scanner detecting languages and frameworks, paired with live compilation status for every target tool.",
   },
 ];
 
@@ -201,15 +250,19 @@ const CAST: HocusPersona[] = [
 ];
 
 const SOUL_EXAMPLE = `---
-character: gilfoyle
+character: gilfoyle        # stable slug — survives a cast switch
 display_name: Zoroaster
 role: reviewer
 voice: cold, precise, contemptuous of inefficiency
 glyph: "(o)"
+aliases:
+  valley: Gilfoyle
+  occult: Mephisto
 triggers:
   - code review
   - pull request
 tools: [read, grep, bash]
+model: claude-sonnet-4-6
 ---
 
 # Zoroaster — Reviewer
@@ -239,10 +292,10 @@ export default function HocusPage() {
               thirteen agents · one repo · zero stand ups
             </p>
             <p className="hocus-hero__lede">
-              A multi-agent harness generator. Write one{" "}
-              <code className="hocus-mono">SOUL.md</code> persona once — compile
-              it into the native agent or rule format for Claude Code, OpenCode,
-              Cursor, and Antigravity.
+              A multi-agent harness generator and interactive command deck. Write
+              one <code className="hocus-mono">SOUL.md</code> persona once — compile
+              it into the native agent format for Claude Code, OpenCode, Codex,
+              Cursor, Antigravity, Command Code, and GitHub Copilot.
             </p>
             <div className="hocus-hero__actions">
               <TrackedLink
@@ -278,15 +331,16 @@ export default function HocusPage() {
           <section id="problem" className="hocus-section">
             <div className="hocus-section__meta">
               <div className="hocus-eyebrow">The problem</div>
-              <h2 className="hocus-section__title">Four tools, four formats</h2>
+              <h2 className="hocus-section__title">Seven targets, seven formats</h2>
             </div>
             <div className="hocus-section__body">
               <p>
-                Claude Code, OpenCode, Cursor, and Antigravity don&apos;t share a
-                config format — but they&apos;ve converged more than you&apos;d expect.
-                Each tool stores personas in a different path with different
-                frontmatter keys. Maintaining the same agent across all four means
-                rewriting the same instructions four times.
+                Claude Code, OpenCode, Codex, Cursor, Antigravity, Command Code,
+                and GitHub Copilot don&apos;t share a config format — but
+                they&apos;ve converged more than you&apos;d expect. Each stores
+                personas in a different path with different frontmatter keys.
+                Maintaining the same agent across all of them means rewriting the
+                same instructions seven times.
               </p>
               <p>
                 Skills don&apos;t need this translation layer —{" "}
@@ -346,7 +400,8 @@ export default function HocusPage() {
             <div className="hocus-section__body">
               <p>
                 Four commands cover the full lifecycle. Initialize once, compile when
-                the repo changes, add skills as needed, sync the dashboard often.
+                the repo changes, add personas and skills as needed, sync the
+                dashboard often.
               </p>
               <div className="hocus-workflow">
                 {WORKFLOW.map((step) => (
@@ -354,6 +409,34 @@ export default function HocusPage() {
                     <code className="hocus-workflow__cmd">{step.cmd}</code>
                     <h3 className="hocus-workflow__title">{step.title}</h3>
                     <p className="hocus-workflow__body">{step.body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <div className="hocus-rule" aria-hidden="true" />
+
+          <section id="deck" className="hocus-section">
+            <div className="hocus-section__meta">
+              <div className="hocus-eyebrow">The command deck</div>
+              <h2 className="hocus-section__title">hocus tui</h2>
+            </div>
+            <div className="hocus-section__body">
+              <p>
+                Running <code className="hocus-mono">hocus</code> with no arguments
+                launches an interactive terminal deck for managing personas,
+                tracking battle plans, chatting with agents, and watching
+                compilation state. Six tabs, switched with{" "}
+                <code className="hocus-mono">Tab</code> or the number keys.
+              </p>
+              <div className="hocus-workflow">
+                {DECK_TABS.map((tab) => (
+                  <div key={tab.name} className="hocus-workflow__step">
+                    <code className="hocus-workflow__cmd">
+                      {tab.key} · {tab.name}
+                    </code>
+                    <p className="hocus-workflow__body">{tab.body}</p>
                   </div>
                 ))}
               </div>
@@ -375,6 +458,21 @@ export default function HocusPage() {
                 <em>Silicon Valley</em> cast and an earlier occultist recast. Click
                 a card to expand voice, triggers, and aliases.
               </p>
+              <p>
+                Pick the naming convention at <code className="hocus-mono">hocus init</code>{" "}
+                — Silicon Valley (Richard, Gilfoyle, Jared&hellip;) or Wizards
+                (Merlin, Zoroaster, Roger Bacon&hellip;), or pass{" "}
+                <code className="hocus-mono">--cast valley</code> /{" "}
+                <code className="hocus-mono">--cast wizard</code>. The choice is
+                cosmetic but it touches file names, skill IDs, and slash commands
+                (<code className="hocus-mono">/merlin-draft-spell</code> vs{" "}
+                <code className="hocus-mono">/richard-draft-spell</code>); it&apos;s
+                saved in <code className="hocus-mono">.hocus/config.json</code> and
+                sets the dashboard default. Roles, voices, glyphs, and behavior are
+                identical either way, and <code className="hocus-mono">?cast=valley</code>{" "}
+                / <code className="hocus-mono">?cast=occult</code> still toggles the
+                dashboard visually.
+              </p>
               <HocusCast personas={CAST} />
             </div>
           </section>
@@ -394,9 +492,9 @@ export default function HocusPage() {
                 <pre className="hocus-code-block__pre">{`npm i -g ${HOCUS_NPM}
 # or: pnpm i -g ${HOCUS_NPM}
 
-hocus init --name my-project
-hocus cast
-hocus sync`}</pre>
+hocus init --name my-project   # add --cast valley for Silicon Valley names
+hocus cast                     # compile for every detected tool
+hocus                          # launch the interactive command deck`}</pre>
               </div>
               <div className="hocus-section__actions">
                 <TrackedLink
